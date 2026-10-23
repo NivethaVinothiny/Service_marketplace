@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact Us | TaskNest</title>
+   <!-- Google Fonts: Lexend Deca -->
+    
+  <link rel="stylesheet" href="contact.css">
+  <script src="contact.js" defer></script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">⌂</span>
+      <span>TaskNest</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="providers.html">Service Providers</a>
+      <a href="booking.html">Bookings</a>
+      <a href="contact.html" class="active">Contact Us</a>
+    </nav>
+
+    <button class="profile-button" aria-label="User profile" type="button">
+      ♟
+    </button>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      type="button"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+  </header>
+
+  <main>
+    <!-- Contact introduction -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">GET IN TOUCH</p>
+        <h1>Contact Us</h1>
+        <p>
+          Have a question? Send us a message.<br>
+          We'd love to hear from you!
+        </p>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <span class="leaf leaf-one"></span>
+        <span class="leaf leaf-two"></span>
+        <span class="leaf leaf-three"></span>
+        <span class="envelope">✉</span>
+        <span class="paper-plane">➤</span>
+        <span class="dotted-line"></span>
+      </div>
+    </section>
+
+    <!-- Contact form and information -->
+    <section class="contact-layout">
+      <div class="form-card">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="fullName">Full Name <span>*</span></label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Enter your name"
+              minlength="2"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span>*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject <span>*</span></label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a subject</option>
+              <option value="General enquiry">General enquiry</option>
+              <option value="Booking question">Booking question</option>
+              <option value="Service enquiry">Service enquiry</option>
+              <option value="Provider support">Provider support</option>
+              <option value="Feedback">Feedback</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message <span>*</span></label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Type your message..."
+              rows="5"
+              minlength="10"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">
+            Send Message
+          </button>
+
+          <p id="formFeedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <!-- Contact information -->
+      <aside class="info-card">
+        <h2>Contact Information</h2>
+
+        <div class="info-item">
+          <span class="info-icon" aria-hidden="true">☎</span>
+          <div>
+            <a href="tel:+91234512345">+91 12345 12345</a>
+            <p>(Mon - Fri, 9 AM - 6 PM)</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-icon" aria-hidden="true">✉</span>
+          <div>
+            <a href="mailto:support@tasknest.com">
+              support@tasknest.com
+            </a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-icon" aria-hidden="true">⌖</span>
+          <div>
+            <p>123 Service Lane,</p>
+            <p>Chennai - 600042</p>
+          </div>
+        </div>
+
+        <div class="social-section">
+          <h2>Follow Us</h2>
+
+          <div class="social-links">
+            <a href="https://www.facebook.com/" aria-label="Facebook">f</a>
+            <a href="https://www.instagram.com/" aria-label="Instagram">◎</a>
+            <a href="https://www.linkedin.com/" aria-label="LinkedIn">in</a>
+            <a href="https://www.x.com/" aria-label="X">♥</a>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Footer -->
+   
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Brand and description -->
+    <div class="footer-column footer-brand">
+      <h2><span class="brand-leaf">🌿</span> TaskNest</h2>
+
+      <p>
+        Your Vision. Our Expertise. One Future, Built Together.
+        Connecting you with verified home service experts.
+      </p>
+    </div>
+
+    <!-- Quick links -->
+    <div class="footer-column">
+      <h3>QUICK LINKS</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="providers.html">Service Providers</a></li>
+        <li><a href="booking.html">Bookings</a></li>
+      </ul>
+    </div>
+
+    <!-- Core services -->
+    <div class="footer-column">
+      <h3>4 CORE SERVICES</h3>
+      <ul>
+        <li><a href="services.html">Carpentry &amp; Woodwork</a></li>
+        <li><a href="services.html">Electrical &amp; Wiring</a></li>
+        <li><a href="services.html">Plumbing &amp; Sanitary</a></li>
+        <li><a href="services.html">Painting &amp; Textures</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact information -->
+    <div class="footer-column">
+      <h3>CONTACT</h3>
+      <ul class="footer-contact">
+        <li><span>📍</span> Tamil Nadu, India</li>
+        <li><span>📞</span> <a href="tel:+911234512345">+91 12345 12345</a></li>
+        <li>
+          <span>✉️</span>
+          <a href="mailto:support@tasknest.com">
+            support@tasknest.com
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 TaskNest Services. All rights reserved.</p>
+  </div>
+</footer>
+
+  <!-- <footer class="footer">
+    <p>© 2026 TaskNest. All rights reserved.</p>
+  </footer> -->
+</body>
+</html>
