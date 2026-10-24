@@ -16,8 +16,9 @@ body {
   background: linear-gradient(135deg, #f0fff4, #f3f0ff, #fff9ec);
   color: var(--dark);
   overflow-x: hidden;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 35px 20px;
   position: relative;
 }
@@ -52,7 +53,7 @@ body {
 }
 
 .des {
-  color: var(--red);
+  color: #c94a4a;
   letter-spacing: 3px;
   font-size: 11px;
   font-weight: 700;
@@ -67,7 +68,7 @@ h1 {
 }
 
 h1 span {
-  color: var(--#255744);
+  color: #255744;
 }
 
 .description {
@@ -146,8 +147,7 @@ form > input {
   outline: none;
   background: #fbfdfb;
   font-size: 14px;
-  transition: border-color .3s, box-shadow .3s,
-              transform .3s;
+  transition: border-color .3s, box-shadow .3s, transform .3s;
 }
 
 form > input:focus {
@@ -220,51 +220,34 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1px;
+  gap: 8px;
   font-size: 12px;
   color: #000905;
- width: 100%;
+  width: 100%;
   margin-top: 20px;
-
 }
 
 .divider-text {
-  display:flex;
+  display: flex;
   height: 10px;
   margin-top: 0px;
   white-space: nowrap;
   font-size: 12px;
-  color: light green ;
-  transform: translateX(-30%);
-  
 }
 
 .social-divider p {
-   margin: 0;
-   font-size: 18px;
-   font-weight: 600;
-   letter-spacing: -2px;
-   font-family: product sans;
-   transform: translateX(-20%);
-  
- 
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -2px;
+  font-family: 'Product Sans', sans-serif;
 }
 
-.g1 , .g4 {
-    color: #4285F4;
-}
+.g1, .g4 { color: #4285F4; }
+.g2, .g6 { color: #EA4335; }
+.g3 { color: #FBBC05; }
+.g5 { color: #34A853; }
 
-.g2 , .g6 {
-    color: #EA4335;
-}
-
-.g3 {
-    color: #FBBC05;
-}
-
-.g5 {
-    color: #34A853;
-}
 #message {
   margin-top: 14px;
   font-size: 12px;
@@ -272,19 +255,6 @@ a:hover {
   text-align: center;
   min-height: 15px;
 }
-
-.signup {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 12px;
-  color: #78877f;
-}
-
-.signup a {
-  margin-left: 5px;
-}
-
-
 
 .orb {
   position: fixed;
@@ -311,20 +281,30 @@ a:hover {
   animation-delay: -4s;
 }
 
-.float {
+/* Safe floating layout - only 3 clean icons tucked away in corners */
+.floating-icons {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
   z-index: 1;
-  font-size: 30px;
-  animation: floatUp 5s ease-in-out infinite;
+}
+
+.float {
+  position: absolute;
+  z-index: 1;
+  font-size: 22px;
+  opacity: 0.5;
+  animation: floatUp 6s ease-in-out infinite;
   pointer-events: none;
 }
 
-.f1 { top: 12%; left: 44%; }
-.f2 { top: 65%; left: 5%; animation-delay: -1s; }
-.f3 { top: 80%; left: 44%; animation-delay: -2s; }
-.f4 { top: 23%; right: 5%; animation-delay: -3s; }
-.f5 { top: 78%; right: 9%; animation-delay: -1.5s; }
-.f6 { top: 45%; left: 3%; animation-delay: -2.5s; }
+.f1 { top: 8%; left: 4%; }
+.f2 { top: 85%; right: 6%; animation-delay: -2s; }
+.f3 { top: 12%; right: 5%; animation-delay: -3s; }
 
 @keyframes slideIn {
   from { opacity: 0; transform: translateX(-35px); }
@@ -343,8 +323,8 @@ a:hover {
 }
 
 @keyframes floatUp {
-  0%, 100% { transform: translateY(0) rotate(-8deg); }
-  50% { transform: translateY(-22px) rotate(8deg); }
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-15px) rotate(6deg); }
 }
 
 @keyframes drift {
@@ -381,7 +361,7 @@ a:hover {
     padding: 28px 23px;
   }
 
-  .f1, .f3, .f4, .f6 {
+  .floating-icons {
     display: none;
   }
 }

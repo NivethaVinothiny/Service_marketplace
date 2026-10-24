@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskNest home services with area-wise city filtering and provider routing.">
+  <title>TaskNest | Services & Location Selector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+  <style>
+    .services-top-bar {
+      padding: 40px 0 20px;
+      background: linear-gradient(135deg, #E8F0EB 0%, #F9F8F3 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .location-selector-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .location-dropdown-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: #FFFFFF;
+      border-radius: 99px;
+      box-shadow: 0 4px 15px rgba(31, 78, 56, 0.08);
+      border: 1px solid rgba(59, 122, 87, 0.2);
+    }
+    .location-dropdown-group label {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .location-dropdown-group select {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      border: none;
+      background: transparent;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .services-container {
+      width: min(var(--page-width), 100% - 64px);
+      margin: 40px auto 80px auto;
+    }
+    .category-section {
+      margin-bottom: 70px;
+    }
+    .category-title {
+      font-size: 1.7rem;
+      color: var(--primary);
+      margin-bottom: 28px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--secondary);
+      display: inline-block;
+      text-shadow: 0 0 15px rgba(59, 122, 87, 0.15);
+    }
+    .issues-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .issue-card {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(31, 78, 56, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border: 1px solid rgba(59, 122, 87, 0.12);
+    }
+    .issue-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(59, 122, 87, 0.22);
+      border-color: var(--secondary);
+    }
+    .issue-photo {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+      background: #D5E5DB;
+      display: block;
+    }
+    .issue-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .issue-card:hover .issue-photo img {
+      transform: scale(1.12);
+    }
+    .issue-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .issue-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .issue-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .issue-price {
+      font-weight: 700;
+      color: #B27D12;
+      font-size: 0.95rem;
+    }
+    .issue-card .btn {
+      width: 100%;
+      margin-top: 12px;
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    @media (max-width: 1024px) {
+      .issues-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .issues-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="logo" href="index.html" aria-label="TaskNest home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M4 11 12 4l8 7M6 10v9h12v-9M10 19v-5h4v5"/></svg>
+        </span>
+        <span class="logo-text">TaskNest</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <div class="nav-panel" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link active" aria-current="page">Services</a></li>
+          <li><a href="providers.html" class="nav-link">Providers</a></li>
+          <li><a href="booking.html" class="nav-link">Booking</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="side-login-item"><a href="login.html" class="nav-link login-link-special">✨ Login</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a class="btn btn-primary nav-cta" href="booking.html">Get started</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="services-top-bar">
+      <div class="container" style="text-align: center;">
+        <h1 class="glow-text" style="font-size: 2.2rem;">Choose Your Location & Service</h1>
+        <p class="section-sub">Select your city and specific area to find localized verified professionals.</p>
+
+        <div class="location-selector-wrap">
+          <div class="location-dropdown-group">
+            <label for="citySelect">📍 City:</label>
+            <select id="citySelect" onchange="updateAreas()">
+              <option value="Coimbatore">Coimbatore</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Madurai">Madurai</option>
+              <option value="Salem">Salem</option>
+              <option value="Trichy">Trichy</option>
+            </select>
+          </div>
+
+          <div class="location-dropdown-group">
+            <label for="areaSelect">🏘️ Area:</label>
+            <select id="areaSelect">
+              <option value="Peelamedu">Peelamedu</option>
+              <option value="Saravanampatti">Saravanampatti</option>
+              <option value="Gandhipuram">Gandhipuram</option>
+              <option value="RS Puram">RS Puram</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="services-container">
+
+      <!-- 1. CARPENTRY SERVICES -->
+      <section class="category-section" id="carpentry">
+        <h2 class="category-title">🪵 Carpentry & Woodwork</h2>
+        <div class="issues-grid">
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80" alt="Custom Wardrobe"></div>
+            <div class="issue-body">
+              <div><h4>Custom Wardrobe Setup</h4><p>Built-in storage tailored to your bedroom layout.</p></div>
+              <div><p class="issue-price">₹1,499 onwards</p><a href="#" onclick="routeToProviders('carpentry', 'Custom Wardrobe Setup')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Modular Kitchen"></div>
+            <div class="issue-body">
+              <div><h4>Modular Kitchen Fitting</h4><p>Complete installation of cabinets and counter units.</p></div>
+              <div><p class="issue-price">₹2,499 onwards</p><a href="#" onclick="routeToProviders('carpentry', 'Modular Kitchen Fitting')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Door Repair"></div>
+            <div class="issue-body">
+              <div><h4>Wooden Door Repair</h4><p>Fixing jammed hinges, locks, or swollen door frames.</p></div>
+              <div><p class="issue-price">₹499 onwards</p><a href="#" onclick="routeToProviders('carpentry', 'Wooden Door Repair')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sofa Assembly"></div>
+            <div class="issue-body">
+              <div><h4>Bed & Sofa Assembly</h4><p>Quick professional assembly for flat-pack furniture.</p></div>
+              <div><p class="issue-price">₹699 onwards</p><a href="#" onclick="routeToProviders('carpentry', 'Bed and Sofa Assembly')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80" alt="Partition Wall"></div>
+            <div class="issue-body">
+              <div><h4>Wooden Partition Wall</h4><p>Stylish wooden dividers for living or office spaces.</p></div>
+              <div><p class="issue-price">₹1,899 onwards</p><a href="#" onclick="routeToProviders('carpentry', 'Wooden Partition Wall')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=600&q=80" alt="Wood Restoration"></div>
+            <div class="issue-body">
+              <div><h4>Antique Wood Restoration</h4><p>Polishing and restoring vintage wooden furniture.</p></div>
+              <div><p class="issue-price">₹1,299 onwards</p><a href="#" onclick="routeToProviders('carpentry', 'Antique Wood Restoration')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=600&q=80" alt="TV Unit"></div>
+            <div class="issue-body">
+              <div><h4>TV Unit Installation</h4><p>Wall-mounted wooden entertainment console setup.</p></div>
+              <div><p class="issue-price">₹799 onwards</p><a href="#" onclick="routeToProviders('carpentry', 'TV Unit Installation')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80" alt="Custom Wardrobe"></div>
+            <div class="issue-body">
+              <div><h4>Shoe Rack Crafting</h4><p>Custom multi-tier wooden shoe storage units.</p></div>
+              <div><p class="issue-price">₹999 onwards</p><a href="#" onclick="routeToProviders('carpentry', 'Shoe Rack Crafting')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. ELECTRICAL WORKS -->
+      <section class="category-section" id="electrical">
+        <h2 class="category-title">⚡ Electrical & Wiring</h2>
+        <div class="issues-grid">
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" alt="Home Wiring"></div>
+            <div class="issue-body">
+              <div><h4>Full Home Wiring</h4><p>Complete concealed or open circuit rewiring.</p></div>
+              <div><p class="issue-price">₹2,999 onwards</p><a href="#" onclick="routeToProviders('electrical', 'Full Home Wiring')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=600&q=80" alt="Ceiling Fan"></div>
+            <div class="issue-body">
+              <div><h4>Ceiling Fan Installation</h4><p>Mounting and wiring standard or decorative fans.</p></div>
+              <div><p class="issue-price">₹349 onwards</p><a href="#" onclick="routeToProviders('electrical', 'Ceiling Fan Installation')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80" alt="Switchboard"></div>
+            <div class="issue-body">
+              <div><h4>Switch & Socket Replacement</h4><p>Upgrading faulty switchboards and power outlets.</p></div>
+              <div><p class="issue-price">₹249 onwards</p><a href="#" onclick="routeToProviders('electrical', 'Switch and Socket Replacement')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Inverter UPS"></div>
+            <div class="issue-body">
+              <div><h4>Inverter & UPS Setup</h4><p>Battery and power backup unit installation.</p></div>
+              <div><p class="issue-price">₹899 onwards</p><a href="#" onclick="routeToProviders('electrical', 'Inverter and UPS Setup')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&w=600&q=80" alt="Chandelier"></div>
+            <div class="issue-body">
+              <div><h4>Chandelier & Light Fixture</h4><p>Secure hanging and wiring of designer lights.</p></div>
+              <div><p class="issue-price">₹599 onwards</p><a href="#" onclick="routeToProviders('electrical', 'Chandelier and Light Fixture')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80" alt="MCB Fuse"></div>
+            <div class="issue-body">
+              <div><h4>MCB & Fuse Box Repair</h4><p>Tripping issues and circuit breaker replacement.</p></div>
+              <div><p class="issue-price">₹499 onwards</p><a href="#" onclick="routeToProviders('electrical', 'MCB and Fuse Box Repair')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80" alt="Smart Home"></div>
+            <div class="issue-body">
+              <div><h4>Home Automation Setup</h4><p>Smart switches and IoT lighting configuration.</p></div>
+              <div><p class="issue-price">₹1,199 onwards</p><a href="#" onclick="routeToProviders('electrical', 'Home Automation Setup')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. PLUMBING SERVICES -->
+      <section class="category-section" id="plumbing">
+        <h2 class="category-title">🔧 Plumbing & Sanitary</h2>
+        <div class="issues-grid">
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Pipe Leak"></div>
+            <div class="issue-body">
+              <div><h4>Pipe Leakage Fixing</h4><p>Detecting and sealing concealed or surface water leaks.</p></div>
+              <div><p class="issue-price">₹399 onwards</p><a href="#" onclick="routeToProviders('plumbing', 'Pipe Leakage Fixing')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=600&q=80" alt="Faucet"></div>
+            <div class="issue-body">
+              <div><h4>Tap & Faucet Replacement</h4><p>Installing new washbasin or sink taps.</p></div>
+              <div><p class="issue-price">₹299 onwards</p><a href="#" onclick="routeToProviders('plumbing', 'Tap and Faucet Replacement')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?auto=format&fit=crop&w=600&q=80" alt="Water Tank"></div>
+            <div class="issue-body">
+              <div><h4>Water Tank Cleaning</h4><p>Thorough scrubbing and sludge removal for overhead tanks.</p></div>
+              <div><p class="issue-price">₹999 onwards</p><a href="#" onclick="routeToProviders('plumbing', 'Water Tank Cleaning')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Sanitaryware"></div>
+            <div class="issue-body">
+              <div><h4>Sanitaryware Installation</h4><p>Western toilets, washbasins, and shower panels.</p></div>
+              <div><p class="issue-price">₹899 onwards</p><a href="#" onclick="routeToProviders('plumbing', 'Sanitaryware Installation')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" alt="Water Motor"></div>
+            <div class="issue-body">
+              <div><h4>Water Motor Pump Repair</h4><p>Fixing automatic pumps, pressure tanks, and foot valves.</p></div>
+              <div><p class="issue-price">₹699 onwards</p><a href="#" onclick="routeToProviders('plumbing', 'Water Motor Pump Repair')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80" alt="Bathroom Reno"></div>
+            <div class="issue-body">
+              <div><h4>Bathroom Renovation</h4><p>End-to-end plumbing overhaul for modern bathrooms.</p></div>
+              <div><p class="issue-price">₹3,499 onwards</p><a href="#" onclick="routeToProviders('plumbing', 'Bathroom Renovation')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=600&q=80" alt="Geyser"></div>
+            <div class="issue-body">
+              <div><h4>Geyser Plumbing Setup</h4><p>Inlet and outlet water pipe connections for water heaters.</p></div>
+              <div><p class="issue-price">₹549 onwards</p><a href="#" onclick="routeToProviders('plumbing', 'Geyser Plumbing Setup')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. PAINTING SERVICES -->
+      <section class="category-section" id="painting">
+        <h2 class="category-title">🎨 Painting & Textures</h2>
+        <div class="issues-grid">
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80" alt="Interior Paint"></div>
+            <div class="issue-body">
+              <div><h4>Interior Wall Painting</h4><p>Fresh emulsion coat for bedrooms and living rooms.</p></div>
+              <div><p class="issue-price">₹1,999 onwards</p><a href="#" onclick="routeToProviders('painting', 'Interior Wall Painting')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80" alt="Wall Textures"></div>
+            <div class="issue-body">
+              <div><h4>Designer Wall Textures</h4><p>Metallic, rustic, or royal finish feature walls.</p></div>
+              <div><p class="issue-price">₹2,499 onwards</p><a href="#" onclick="routeToProviders('painting', 'Designer Wall Textures')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Waterproofing"></div>
+            <div class="issue-body">
+              <div><h4>Waterproofing & Damp Proof</h4><p>Preventing roof seepage and wall moisture peeling.</p></div>
+              <div><p class="issue-price">₹1,799 onwards</p><a href="#" onclick="routeToProviders('painting', 'Waterproofing and Damp Proof')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Exterior Paint"></div>
+            <div class="issue-body">
+              <div><h4>Exterior Weathercoat</h4><p>Weather-resistant protective paint for outer walls.</p></div>
+              <div><p class="issue-price">₹2,999 onwards</p><a href="#" onclick="routeToProviders('painting', 'Exterior Weathercoat')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=600&q=80" alt="Kids Room Art"></div>
+            <div class="issue-body">
+              <div><h4>Kids Room Stencil Art</h4><p>Fun cartoon characters and colorful wall stencils.</p></div>
+              <div><p class="issue-price">₹1,499 onwards</p><a href="#" onclick="routeToProviders('painting', 'Kids Room Stencil Art')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Wood Polishing"></div>
+            <div class="issue-body">
+              <div><h4>Wood & Metal Polishing</h4><p>Melamine polish and enamel paint for gates and railings.</p></div>
+              <div><p class="issue-price">₹899 onwards</p><a href="#" onclick="routeToProviders('painting', 'Wood and Metal Polishing')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Ceiling Paint"></div>
+            <div class="issue-body">
+              <div><h4>Ceiling & POP Painting</h4><p>Smooth false ceiling coating and primer finish.</p></div>
+              <div><p class="issue-price">₹999 onwards</p><a href="#" onclick="routeToProviders('painting', 'Ceiling and POP Painting')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+          <div class="issue-card">
+            <div class="issue-photo"><img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80" alt="Wall Murals"></div>
+            <div class="issue-body">
+              <div><h4>Custom Wall Murals</h4><p>Hand-painted artistic murals for cafes and feature rooms.</p></div>
+              <div><p class="issue-price">₹3,999 onwards</p><a href="#" onclick="routeToProviders('painting', 'Custom Wall Murals')" class="btn btn-primary glow-btn">Book Service</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">🌿 TaskNest</div>
+          <p class="footer-desc">Your Vision. Our Expertise. One Future, Built Together. Connecting you with verified home service experts.</p>
+        </div>
+        <div class="footer-col">
+          <h3>QUICK LINKS</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="providers.html">Service Providers</a></li>
+            <li><a href="booking.html">Bookings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>4 CORE SERVICES</h3>
+          <ul>
+            <li>Carpentry & Woodwork</li>
+            <li>Electrical & Wiring</li>
+            <li>Plumbing & Sanitary</li>
+            <li>Painting & Textures</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>CONTACT</h3>
+          <p>📍 Tamil Nadu, India</p>
+          <p>📞 +91 98765 43210</p>
+          <p>✉️ support@tasknest.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TaskNest Services. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    const cityAreas = {
+      "Coimbatore": ["Peelamedu", "Saravanampatti", "Gandhipuram", "RS Puram", "R.S. Puram West"],
+      "Chennai": ["T. Nagar", "Anna Nagar", "Adyar", "Velachery", "Mylapore"],
+      "Madurai": ["Anna Nagar", "K. Pudur", "KK Nagar", "Tallakulam", "Bypass Road"],
+      "Salem": ["Fairlands", "Ammapet", "Hasthampatti", "Suramangalam", "Alagapuram"],
+      "Trichy": ["Thillai Nagar", "Cantonment", "Srirangam", "Woraiyur", "K.K. Nagar"]
+    };
+
+    function updateAreas() {
+      const citySelect = document.getElementById('citySelect');
+      const areaSelect = document.getElementById('areaSelect');
+      const selectedCity = citySelect.value;
+      
+      const areas = cityAreas[selectedCity] || [];
+      areaSelect.innerHTML = "";
+      
+      areas.forEach(area => {
+        const opt = document.createElement('option');
+        opt.value = area;
+        opt.textContent = area;
+        areaSelect.appendChild(opt);
+      });
+    }
+
+    function routeToProviders(category, serviceName) {
+      const city = document.getElementById('citySelect').value;
+      const area = document.getElementById('areaSelect').value;
+      
+      window.location.href = `providers.html?category=${category}&service=${encodeURIComponent(serviceName)}&city=${encodeURIComponent(city)}&area=${encodeURIComponent(area)}`;
+    }
+
+    window.onload = updateAreas;
+  </script>
+</body>
+</html>

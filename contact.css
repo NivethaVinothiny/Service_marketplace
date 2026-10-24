@@ -22,10 +22,11 @@ body {
   color: var(--text);
   line-height: 1.5;
   min-height: 100vh;
+  display: block;
 }
 
 /* Navigation bar */
-.navbar {
+header:not(.site-header) .navbar {
   min-height: 68px;
   display: flex;
   align-items: center;
@@ -36,7 +37,7 @@ body {
   border-bottom: 1px solid #efeee8;
 }
 
-.logo {
+header:not(.site-header) .logo {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -59,14 +60,14 @@ body {
   line-height: 1;
 }
 
-.nav-links {
+header:not(.site-header) .nav-links {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 26px;
 }
 
-.nav-links a {
+header:not(.site-header) .nav-links a {
   padding: 10px 0;
   text-decoration: none;
   color: #485954;
@@ -76,8 +77,8 @@ body {
   font-weight: bolder;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+header:not(.site-header) .nav-links a:hover,
+header:not(.site-header) .nav-links a.active {
   color: var(--green);
   border-bottom-color: var(--green);
 }
@@ -393,14 +394,14 @@ body {
 /* Footer */
 
 /* TaskNest footer */
-.site-footer {
+.legacy-contact-footer .site-footer {
   background: #205744;
   color: #ffffff;
   padding: 46px 6% 24px;
   border-radius: 0 0 5px 5px;
 }
 
-.footer-container {
+.legacy-contact-footer .footer-container {
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
@@ -468,7 +469,7 @@ body {
   flex-shrink: 0;
 }
 
-.footer-bottom {
+.legacy-contact-footer .footer-bottom {
   max-width: 1280px;
   margin: 0 auto;
   padding-top: 22px;
@@ -483,7 +484,7 @@ body {
 
 /* Tablet */
 @media (max-width: 900px) {
-  .footer-container {
+  .legacy-contact-footer .footer-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 32px;
   }
@@ -491,11 +492,11 @@ body {
 
 /* Mobile */
 @media (max-width: 500px) {
-  .site-footer {
+  .legacy-contact-footer .site-footer {
     padding: 32px 22px 20px;
   }
 
-  .footer-container {
+  .legacy-contact-footer .footer-container {
     grid-template-columns: 1fr;
     gap: 26px;
   }
@@ -508,7 +509,7 @@ body {
 
 /* Mobile layout */
 @media (max-width: 760px) {
-  .navbar {
+  header:not(.site-header) .navbar {
     flex-wrap: wrap;
     gap: 12px;
   }
@@ -521,7 +522,7 @@ body {
     display: block;
   }
 
-  .nav-links {
+  header:not(.site-header) .nav-links {
     display: none;
     order: 5;
     width: 100%;
@@ -532,11 +533,11 @@ body {
    
   }
 
-  .nav-links.show {
+  header:not(.site-header) .nav-links.show {
     display: flex;
   }
 
-  .nav-links a {
+  header:not(.site-header) .nav-links a {
     padding: 10px;
     font-weight: bold;
   }

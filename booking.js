@@ -1,147 +1,199 @@
-var service = document.getElementById("service");
-var date = document.getElementById("date");
-var problem = document.getElementById("problem");
-var timeButtons = document.querySelectorAll(".time");
-
-var selectedTime = "11 AM–1 PM";
-
-// Set today's date as the minimum date
-var today = new Date().toISOString().split("T")[0];
-date.min = today;
-
-// Change the selected time slot
-timeButtons.forEach(function(button) {
-    button.addEventListener("click", function() {
-        timeButtons.forEach(function(item) {
-            item.classList.remove("selected");
-        });
-
-        button.classList.add("selected");
-        selectedTime = button.textContent;
-
-        updateSummary();
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  setupMobileMenu();
+  setupBookingLogic();
 });
 
-// Update the character counter
-problem.addEventListener("input", function() {
-    document.getElementById("count").textContent =
-        problem.value.length;
-});
+/* 1. Mobile Menu Toggle */
+function setupMobileMenu() {
+  const navToggle = document.getElementById("nav-toggle");
+  const navMenu = document.getElementById("nav-menu");
 
-// Update summary when service or date changes
-service.addEventListener("change", updateSummary);
-date.addEventListener("change", updateSummary);
+  if (!navToggle || !navMenu) return;
 
-// Update the booking summary
-function updateSummary() {
-    var visit = 199;
-    var labourMin = 500;
-    var labourMax = 1200;
-    var description = "Relilable Carpentry Services at your Doorstep";
-
-    if (service.value === "Plumbing") {
-        visit = 149;
-        labourMin = 300;
-        labourMax = 900;
-        description = "Quality Plumbing, Hassle-free Living";
-    } else if (service.value === "Electrical") {
-        visit = 179;
-        labourMin = 400;
-        labourMax = 1000;
-        description = "Powering your Home with Safe, Reliable Solutions";
-    } else if (service.value === "Painting") {
-        visit = 249;
-        labourMin = 600;
-        labourMax = 1500;
-        description = "Bring your home to life with beautiful colours";
-    } else if (service.value === "Landscaping") {
-        visit = 349;
-        labourMin = 700;
-        labourMax = 1500;
-        description = "Nature's Beauty, Designed for your Home";
-    }
-
-    document.getElementById("summaryService").textContent =
-        service.value;
-
-    document.getElementById("description").textContent =
-        description;
-
-    document.getElementById("visitPrice").textContent =
-        "₹" + visit;
-
-    document.getElementById("labourPrice").textContent =
-        "₹" + labourMin + " – ₹" + labourMax;
-
-    document.getElementById("totalPrice").textContent =
-        "₹" + (visit + labourMin) + " – ₹" + (visit + labourMax);
-
-    if (date.value !== "") {
-        document.getElementById("summaryDate").textContent =
-            date.value;
-    } else {
-        document.getElementById("summaryDate").textContent =
-            "Choose a date";
-    }
-
-    document.getElementById("summaryTime").textContent =
-        selectedTime;
+  navToggle.addEventListener("click", function () {
+    const isOpen = navMenu.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", isOpen);
+  });
 }
 
-// Validate the form
-document.getElementById("bookingForm").addEventListener("submit",
-function(event) {
-    event.preventDefault();
+/* 2. Booking Form Live Summary & Validation Logic */
+function setupBookingLogic() {
+  const service = document.getElementById("service");
+  const date = document.getElementById("date");
+  const problem = document.getElementById("problem");
+  const timeButtons = document.querySelectorAll(".time");
+  let selectedTime = "11 AM–1 PM";
 
-    var address = document.getElementById("address").value;
-    var name = document.getElementById("name").value;
-    var phone = document.getElementById("phone").value;
+  if (date) {
+    const today = new Date().toISOString().split("T")[0];
+    date.min = today;
+  }
 
-    var isValid = true;
+  if (timeButtons.length > 0) {
+    timeButtons.forEach(function (button) {
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+        timeButtons.forEach(function (item) {
+          item.classList.remove("selected");
+        });
+        button.classList.add("selected");
+        selectedTime = button.textContent;
+        updateSummary();
+      });
+    });
+  }
 
-    document.getElementById("addressError").textContent = "";
-    document.getElementById("dateError").textContent = "";
-    document.getElementById("problemError").textContent = "";
-    document.getElementById("nameError").textContent = "";
-    document.getElementById("phoneError").textContent = "";
-    document.getElementById("message").textContent = "";
+  if (problem) {
+    problem.addEventListener("input", function () {
+      const countSpan = document.getElementById("count");
+      if (countSpan) countSpan.textContent = problem.value.length;
+    });
+  }
 
-    if (address === "") {
-        document.getElementById("addressError").textContent =
-            "Please enter your address.";
-        isValid = false;
+  if (service) service.addEventListener("change", updateSummary);
+  if (date) date.addEventListener("change", updateSummary);
+
+  function updateSummary() {
+    let visit = 199;
+    let labourMin = 500;
+    let labourMax = 1200;
+    let description = "Reliable Carpentry Services at your Doorstep";
+
+    const serviceVal = service ? service.value : "Carpentry";
+
+    if (serviceVal === "Plumbing") {
+      visit = 149;
+      labourMin = 300;
+      labourMax = 900;
+      description = "Quality Plumbing, Hassle-free Living";
+    } else if (serviceVal === "Electrical") {
+      visit = 179;
+      labourMin = 400;
+      labourMax = 1000;
+      description = "Powering your Home with Safe, Reliable Solutions";
+    } else if (serviceVal === "Painting") {
+      visit = 249;
+      labourMin = 600;
+      labourMax = 1500;
+      description = "Bring your home to life with beautiful colours";
+    } else if (serviceVal === "Landscaping") {
+      visit = 349;
+      labourMin = 700;
+      labourMax = 1500;
+      description = "Nature's Beauty, Designed for your Home";
     }
 
-    if (date.value === "") {
-        document.getElementById("dateError").textContent =
-            "Please select a date.";
-        isValid = false;
+    if (document.getElementById("summaryService")) document.getElementById("summaryService").textContent = serviceVal;
+    if (document.getElementById("description")) document.getElementById("description").textContent = description;
+    if (document.getElementById("visitPrice")) document.getElementById("visitPrice").textContent = "₹" + visit;
+    if (document.getElementById("labourPrice")) document.getElementById("labourPrice").textContent = "₹" + labourMin + " – ₹" + labourMax;
+    if (document.getElementById("totalPrice")) document.getElementById("totalPrice").textContent = "₹" + (visit + labourMin) + " – ₹" + (visit + labourMax);
+
+    if (date && date.value !== "") {
+      document.getElementById("summaryDate").textContent = date.value;
+    } else if (document.getElementById("summaryDate")) {
+      document.getElementById("summaryDate").textContent = "Choose a date";
     }
 
-    if (problem.value === "") {
-        document.getElementById("problemError").textContent =
-            "Please describe the problem.";
-        isValid = false;
-    }
+    if (document.getElementById("summaryTime")) document.getElementById("summaryTime").textContent = selectedTime;
+  }
 
-    if (name === "") {
-        document.getElementById("nameError").textContent =
-            "Please enter your name.";
-        isValid = false;
-    }
+  // Auto-fill parameters from provider cards
+  const urlParams = new URLSearchParams(window.location.search);
+  const serviceParam = urlParams.get('service');
+  const providerParam = urlParams.get('provider');
 
-    if (phone.length < 10) {
-        document.getElementById("phoneError").textContent =
-            "Please enter a valid phone number.";
-        isValid = false;
+  if (serviceParam && service) {
+    for (let option of service.options) {
+      if (option.value.toLowerCase().includes(serviceParam.toLowerCase())) {
+        service.value = option.value;
+        break;
+      }
     }
+  }
 
-    if (isValid === true) {
-        document.getElementById("message").textContent =
-            "Your booking request is ready!";
+  if (providerParam) {
+    let providerSelect = document.getElementById("providerSelect");
+    if (providerSelect) {
+      let found = false;
+      for (let option of providerSelect.options) {
+        if (option.value.toLowerCase().includes(providerParam.toLowerCase())) {
+          providerSelect.value = option.value;
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        const newOpt = document.createElement('option');
+        newOpt.value = providerParam;
+        newOpt.textContent = providerParam;
+        providerSelect.appendChild(newOpt);
+        providerSelect.value = providerParam;
+      }
     }
-});
+  }
+  updateSummary();
 
-// Display the initial summary
-updateSummary();
+  // Form Submit & Popup Modals
+  const bookingForm = document.getElementById("bookingForm");
+  const summaryModalOverlay = document.getElementById("summaryModalOverlay");
+  const loginPromptModalOverlay = document.getElementById("loginPromptModalOverlay");
+
+  if (bookingForm) {
+    bookingForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!bookingForm.checkValidity()) {
+        bookingForm.reportValidity();
+        return;
+      }
+
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+      if (!isLoggedIn) {
+        if (loginPromptModalOverlay) loginPromptModalOverlay.style.display = "flex";
+        return;
+      }
+
+      const address = document.getElementById("address").value;
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const providerSelect = document.getElementById("providerSelect");
+      const selectedProvider = providerSelect ? providerSelect.value : "Any available professional";
+
+      const modalContent = document.getElementById("modalSummaryContent");
+      if (modalContent) {
+        modalContent.innerHTML = `
+          <p><strong>Customer Name:</strong> ${name}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Service:</strong> ${service.value}</p>
+          <p><strong>Assigned Expert:</strong> ${selectedProvider}</p>
+          <p><strong>Service Address:</strong> ${address}</p>
+          <p><strong>Date & Time:</strong> ${date.value} (${selectedTime})</p>
+          <p><strong>Estimated Cost:</strong> ${document.getElementById("totalPrice").textContent}</p>
+          <p style="color: #176b42; margin-top: 10px;"><strong>✓ No payment required now. Pay after service.</strong></p>
+        `;
+      }
+
+      if (summaryModalOverlay) summaryModalOverlay.style.display = "flex";
+    });
+  }
+
+  // Modal Close Handlers
+  const closeModalBtn = document.getElementById("closeModalBtn");
+  const modalDoneBtn = document.getElementById("modalDoneBtn");
+  const closeLoginModal = document.getElementById("closeLoginModal");
+
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", () => { summaryModalOverlay.style.display = "none"; });
+  }
+  if (modalDoneBtn) {
+    modalDoneBtn.addEventListener("click", () => {
+      summaryModalOverlay.style.display = "none";
+      window.location.href = "index.html";
+    });
+  }
+  if (closeLoginModal) {
+    closeLoginModal.addEventListener("click", () => { loginPromptModalOverlay.style.display = "none"; });
+  }
+}

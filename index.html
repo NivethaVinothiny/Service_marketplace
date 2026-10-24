@@ -7,7 +7,7 @@
   <title>TaskNest | Quality Services, Trusted Professionals</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="home.css">
 </head>
 <body>
@@ -30,32 +30,36 @@
         <span class="nav-toggle-bar"></span>
       </button>
 
+      <!-- SIDE NAVIGATION PANEL -->
       <div class="nav-panel" id="nav-menu">
         <ul class="nav-links">
-          <li><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+          <li><a href="index.html" class="nav-link" aria-current="page">Home</a></li>
           <li><a href="services.html" class="nav-link">Services</a></li>
           <li><a href="providers.html" class="nav-link">Providers</a></li>
           <li><a href="booking.html" class="nav-link">Booking</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="./contact.html" class="nav-link">Contact</a></li>
+          <li class="side-login-item"><a href="login.html" class="nav-link login-link-special">✨ Login</a></li>
         </ul>
-        <a class="btn btn-primary nav-cta" href="booking.html">Get started</a>
+        <div class="nav-actions">
+          <a class="btn btn-primary nav-cta" href="booking.html">Get started</a>
+        </div>
       </div>
     </nav>
   </header>
 
   <main id="main-content">
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION WITH ROTATING TEXT & IMAGE SLIDER -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-inner">
         <div class="hero-content">
-          <p class="eyebrow">Welcome to TaskNest</p>
-          <h1 id="hero-title">Quality Services, Trusted Professionals.</h1>
+          <p class="eyebrow">✨ Welcome to TaskNest</p>
+          <h1 id="hero-title">Quality Services, <span id="rotating-text" class="glow-text">Trusted Professionals.</span></h1>
           <p class="hero-text">Find reliable help for the place you call home. From everyday upkeep to the jobs you've been putting off, discover skilled local professionals with ease.</p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="services.html">Find a service</a>
-            <a class="btn btn-outline" href="contact.html">Become a provider</a>
+            <a class="btn btn-primary glow-btn" href="services.html">Find a service</a>
+            <a class="btn btn-outline" href="./contact.html">Become a provider</a>
           </div>
 
           <div class="hero-note">
@@ -70,15 +74,15 @@
 
         <div class="hero-visual">
           <span class="hero-circle" aria-hidden="true"></span>
-          <div class="photo-frame hero-photo" data-label="Add photo: images/hero.jpg">
-            <img src="images/hero.jpg" data-photo
-                 alt="A service professional in a green uniform working in a bright, tidy living room">
+          <div class="photo-frame hero-photo">
+            <img id="hero-slider-img" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80" data-photo
+                 alt="A service professional working in a bright, tidy living room">
           </div>
-          <div class="hero-badge">
+          <div class="hero-badge glow-badge">
             <span class="badge-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16 9.8"/></svg>
             </span>
-            <p>Care for every corner of home</p>
+            <p>🌟 Verified Local Experts</p>
           </div>
         </div>
       </div>
@@ -97,9 +101,9 @@
         </header>
 
         <div class="category-grid">
-          <article class="category-card">
-            <div class="photo-frame card-photo" data-label="Add photo: images/cat-cleaning.jpg">
-              <img src="images/cat-cleaning.jpg" data-photo alt="Two people cleaning a bright living room">
+          <article class="category-card glow-card">
+            <div class="photo-frame card-photo">
+              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80" data-photo alt="Home Cleaning">
             </div>
             <div class="card-body">
               <h3>Home Cleaning</h3>
@@ -108,9 +112,9 @@
             </div>
           </article>
 
-          <article class="category-card">
-            <div class="photo-frame card-photo" data-label="Add photo: images/cat-plumbing.jpg">
-              <img src="images/cat-plumbing.jpg" data-photo alt="Hands adjusting a brass fitting">
+          <article class="category-card glow-card">
+            <div class="photo-frame card-photo">
+              <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" data-photo alt="Plumbing">
             </div>
             <div class="card-body">
               <h3>Plumbing</h3>
@@ -119,9 +123,9 @@
             </div>
           </article>
 
-          <article class="category-card">
-            <div class="photo-frame card-photo" data-label="Add photo: images/cat-electrical.jpg">
-              <img src="images/cat-electrical.jpg" data-photo alt="An electrician working on a fuse panel">
+          <article class="category-card glow-card">
+            <div class="photo-frame card-photo">
+              <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" data-photo alt="Electrical">
             </div>
             <div class="card-body">
               <h3>Electrical</h3>
@@ -130,9 +134,9 @@
             </div>
           </article>
 
-          <article class="category-card">
-            <div class="photo-frame card-photo" data-label="Add photo: images/cat-painting.jpg">
-              <img src="images/cat-painting.jpg" data-photo alt="A painter rolling paint onto a wall">
+          <article class="category-card glow-card">
+            <div class="photo-frame card-photo">
+              <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80" data-photo alt="Painting">
             </div>
             <div class="card-body">
               <h3>Painting</h3>
@@ -156,68 +160,68 @@
         </header>
 
         <div class="provider-grid">
-          <article class="provider-card">
-            <div class="photo-frame provider-photo" data-label="Add photo: images/provider-ananya.jpg">
-              <img src="images/provider-ananya.jpg" data-photo alt="Portrait of Ananya Rao holding a duster and spray bottle">
+          <article class="provider-card glow-card">
+            <div class="photo-frame provider-photo">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" data-photo alt="Portrait of Anbu Selvan">
             </div>
             <div class="provider-top">
-              <h3>Ananya Rao</h3>
-              <p class="rating" aria-label="Rated 4.9 out of 5"><span class="star" aria-hidden="true">&#9733;</span> 4.9</p>
-            </div>
-            <p class="provider-role">Home Cleaning Specialist</p>
-            <p class="provider-place">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-              Chennai
-            </p>
-            <a class="btn btn-primary btn-block" href="booking.html?provider=Ananya%20Rao">Enquire to book<span class="visually-hidden"> with Ananya Rao</span></a>
-          </article>
-
-          <article class="provider-card">
-            <div class="photo-frame provider-photo" data-label="Add photo: images/provider-arjun.jpg">
-              <img src="images/provider-arjun.jpg" data-photo alt="Portrait of Arjun Menon smiling with arms crossed">
-            </div>
-            <div class="provider-top">
-              <h3>Arjun Menon</h3>
+              <h3>Anbu Selvan</h3>
               <p class="rating" aria-label="Rated 4.8 out of 5"><span class="star" aria-hidden="true">&#9733;</span> 4.8</p>
             </div>
-            <p class="provider-role">Plumbing Specialist</p>
+            <p class="provider-role">Custom Furniture & Wardrobes</p>
             <p class="provider-place">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-              Chennai
+              Saravanampatti, Coimbatore
             </p>
-            <a class="btn btn-primary btn-block" href="booking.html?provider=Arjun%20Menon">Enquire to book<span class="visually-hidden"> with Arjun Menon</span></a>
+            <a class="btn btn-primary btn-block" href="booking.html?provider=Anbu%20Selvan">Enquire to book<span class="visually-hidden"> with Anbu Selvan</span></a>
           </article>
 
-          <article class="provider-card">
-            <div class="photo-frame provider-photo" data-label="Add photo: images/provider-karthik.jpg">
-              <img src="images/provider-karthik.jpg" data-photo alt="Portrait of Karthik S working on an electrical fitting">
+          <article class="provider-card glow-card">
+            <div class="photo-frame provider-photo">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" data-photo alt="Portrait of Suresh Raj">
             </div>
             <div class="provider-top">
-              <h3>Karthik S</h3>
+              <h3>Suresh Raj</h3>
               <p class="rating" aria-label="Rated 4.9 out of 5"><span class="star" aria-hidden="true">&#9733;</span> 4.9</p>
             </div>
-            <p class="provider-role">Electrical Specialist</p>
+            <p class="provider-role">Home Wiring & Lighting</p>
             <p class="provider-place">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-              Chennai
+              Peelamedu, Coimbatore
             </p>
-            <a class="btn btn-primary btn-block" href="booking.html?provider=Karthik%20S">Enquire to book<span class="visually-hidden"> with Karthik S</span></a>
+            <a class="btn btn-primary btn-block" href="booking.html?provider=Suresh%20Raj">Enquire to book<span class="visually-hidden"> with Suresh Raj</span></a>
           </article>
 
-          <article class="provider-card">
-            <div class="photo-frame provider-photo" data-label="Add photo: images/provider-meera.jpg">
-              <img src="images/provider-meera.jpg" data-photo alt="Portrait of Meera Nair in a cream jacket">
+          <article class="provider-card glow-card">
+            <div class="photo-frame provider-photo">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" data-photo alt="Portrait of Murali Krishnan">
             </div>
             <div class="provider-top">
-              <h3>Meera Nair</h3>
+              <h3>Murali Krishnan</h3>
               <p class="rating" aria-label="Rated 4.8 out of 5"><span class="star" aria-hidden="true">&#9733;</span> 4.8</p>
             </div>
-            <p class="provider-role">Interior Painting Specialist</p>
+            <p class="provider-role">Pipe Leakages & Fittings</p>
             <p class="provider-place">
               <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-              Chennai
+              Gandhipuram, Coimbatore
             </p>
-            <a class="btn btn-primary btn-block" href="booking.html?provider=Meera%20Nair">Enquire to book<span class="visually-hidden"> with Meera Nair</span></a>
+            <a class="btn btn-primary btn-block" href="booking.html?provider=Murali%20Krishnan">Enquire to book<span class="visually-hidden"> with Murali Krishnan</span></a>
+          </article>
+
+          <article class="provider-card glow-card">
+            <div class="photo-frame provider-photo">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80" data-photo alt="Portrait of Divya Ramesh">
+            </div>
+            <div class="provider-top">
+              <h3>Divya Ramesh</h3>
+              <p class="rating" aria-label="Rated 4.9 out of 5"><span class="star" aria-hidden="true">&#9733;</span> 4.9</p>
+            </div>
+            <p class="provider-role">Wall Textures & Murals</p>
+            <p class="provider-place">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+              Ramanathapuram, Coimbatore
+            </p>
+            <a class="btn btn-primary btn-block" href="booking.html?provider=Divya%20Ramesh">Enquire to book<span class="visually-hidden"> with Divya Ramesh</span></a>
           </article>
         </div>
       </div>
@@ -252,7 +256,7 @@
 
     <!-- CALL TO ACTION -->
     <section class="cta-wrap" aria-labelledby="cta-title">
-      <div class="cta">
+      <div class="cta glow-cta">
         <p class="cta-eyebrow">Let's get it done</p>
         <h2 id="cta-title">A happier home starts with the right help.</h2>
         <p class="cta-text">Find thoughtful, skilled help for your next home project.</p>
@@ -263,15 +267,99 @@
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="footer-inner">
-      <div>
-        <p class="footer-brand">TaskNest</p>
-        <p class="footer-tagline">Good people. Great work. A home you love.</p>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">🌿 TaskNest</div>
+          <p class="footer-desc">Your Vision. Our Expertise. One Future, Built Together. Connecting you with verified home service experts.</p>
+        </div>
+        <div class="footer-col">
+          <h3>QUICK LINKS</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="providers.html">Service Providers</a></li>
+            <li><a href="booking.html">Bookings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>4 CORE SERVICES</h3>
+          <ul>
+            <li>Carpentry & Woodwork</li>
+            <li>Electrical & Wiring</li>
+            <li>Plumbing & Sanitary</li>
+            <li>Painting & Textures</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>CONTACT</h3>
+          <p>📍 Tamil Nadu, India</p>
+          <p>📞 +91 98765 43210</p>
+          <p>✉️ support@tasknest.com</p>
+        </div>
       </div>
-      <p class="footer-copy">&copy; 2026 TaskNest. All rights reserved.</p>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TaskNest Services. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <script src="home.js"></script>
+  <!-- JavaScript for Mobile Menu, Hero Slider & Rotating Hero Words -->
+  <script>
+    // 1. Mobile Menu Toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // 2. Auto-Changing Hero Images Slider
+    const heroImages = [
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80", 
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", 
+      "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80"  
+    ];
+    
+    let currentImgIndex = 0;
+    const sliderImg = document.getElementById('hero-slider-img');
+
+    if (sliderImg) {
+      setInterval(() => {
+        sliderImg.style.opacity = 0; 
+        setTimeout(() => {
+          currentImgIndex = (currentImgIndex + 1) % heroImages.length;
+          sliderImg.src = heroImages[currentImgIndex];
+          sliderImg.style.opacity = 1; 
+        }, 300);
+      }, 3500);
+    }
+
+    // 3. Rotating Hero Words (Dynamic Text Animation)
+    const rotatingWords = [
+      "Trusted Professionals.",
+      "Verified Experts.",
+      "Skilled Artisans.",
+      "Reliable Local Help."
+    ];
+    let wordIndex = 0;
+    const rotatingTextSpan = document.getElementById('rotating-text');
+
+    if (rotatingTextSpan) {
+      setInterval(() => {
+        rotatingTextSpan.style.opacity = 0;
+        rotatingTextSpan.style.transform = "translateY(10px)";
+        setTimeout(() => {
+          wordIndex = (wordIndex + 1) % rotatingWords.length;
+          rotatingTextSpan.textContent = rotatingWords[wordIndex];
+          rotatingTextSpan.style.opacity = 1;
+          rotatingTextSpan.style.transform = "translateY(0)";
+        }, 300);
+      }, 3000);
+    }
+  </script>
 </body>
 </html>

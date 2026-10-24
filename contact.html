@@ -8,42 +8,47 @@
   <title>Contact Us | TaskNest</title>
    <!-- Google Fonts: Lexend Deca -->
     
+  <link rel="stylesheet" href="home.css">
   <link rel="stylesheet" href="contact.css">
   <script src="contact.js" defer></script>
 </head>
 
 <body>
-  <!-- Navigation -->
-  <header class="navbar">
-    <a href="index.html" class="logo">
-      <span class="logo-icon">⌂</span>
-      <span>TaskNest</span>
-    </a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="providers.html">Service Providers</a>
-      <a href="booking.html">Bookings</a>
-      <a href="contact.html" class="active">Contact Us</a>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="logo" href="index.html" aria-label="TaskNest home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M4 11 12 4l8 7M6 10v9h12v-9M10 19v-5h4v5"/></svg>
+        </span>
+        <span class="logo-text">TaskNest</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <div class="nav-panel" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="providers.html" class="nav-link">Providers</a></li>
+          <li><a href="booking.html" class="nav-link">Booking</a></li>
+          <li><a href="./contact.html" class="nav-link active" aria-current="page">Contact</a></li>
+          <li class="side-login-item"><a href="login.html" class="nav-link login-link-special">✨ Login</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a class="btn btn-primary nav-cta" href="booking.html">Get started</a>
+        </div>
+      </div>
     </nav>
-
-    <button class="profile-button" aria-label="User profile" type="button">
-      ♟
-    </button>
-
-    <button
-      class="menu-toggle"
-      id="menuToggle"
-      type="button"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-    >
-      ☰
-    </button>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- Contact introduction -->
     <section class="hero">
       <div class="hero-text">
@@ -168,67 +173,42 @@
     </section>
   </main>
 
-  <!-- Footer -->
-   
-<footer class="site-footer">
-  <div class="footer-container">
-
-    <!-- Brand and description -->
-    <div class="footer-column footer-brand">
-      <h2><span class="brand-leaf">🌿</span> TaskNest</h2>
-
-      <p>
-        Your Vision. Our Expertise. One Future, Built Together.
-        Connecting you with verified home service experts.
-      </p>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">🌿 TaskNest</div>
+          <p class="footer-desc">Your Vision. Our Expertise. One Future, Built Together. Connecting you with verified home service experts.</p>
+        </div>
+        <div class="footer-col">
+          <h3>QUICK LINKS</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="providers.html">Service Providers</a></li>
+            <li><a href="booking.html">Bookings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>4 CORE SERVICES</h3>
+          <ul>
+            <li>Carpentry &amp; Woodwork</li>
+            <li>Electrical &amp; Wiring</li>
+            <li>Plumbing &amp; Sanitary</li>
+            <li>Painting &amp; Textures</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>CONTACT</h3>
+          <p>📍 Tamil Nadu, India</p>
+          <p>📞 +91 98765 43210</p>
+          <p>✉️ support@tasknest.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TaskNest Services. All rights reserved.</p>
+      </div>
     </div>
-
-    <!-- Quick links -->
-    <div class="footer-column">
-      <h3>QUICK LINKS</h3>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="providers.html">Service Providers</a></li>
-        <li><a href="booking.html">Bookings</a></li>
-      </ul>
-    </div>
-
-    <!-- Core services -->
-    <div class="footer-column">
-      <h3>4 CORE SERVICES</h3>
-      <ul>
-        <li><a href="services.html">Carpentry &amp; Woodwork</a></li>
-        <li><a href="services.html">Electrical &amp; Wiring</a></li>
-        <li><a href="services.html">Plumbing &amp; Sanitary</a></li>
-        <li><a href="services.html">Painting &amp; Textures</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact information -->
-    <div class="footer-column">
-      <h3>CONTACT</h3>
-      <ul class="footer-contact">
-        <li><span>📍</span> Tamil Nadu, India</li>
-        <li><span>📞</span> <a href="tel:+911234512345">+91 12345 12345</a></li>
-        <li>
-          <span>✉️</span>
-          <a href="mailto:support@tasknest.com">
-            support@tasknest.com
-          </a>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <p>© 2026 TaskNest Services. All rights reserved.</p>
-  </div>
-</footer>
-
-  <!-- <footer class="footer">
-    <p>© 2026 TaskNest. All rights reserved.</p>
-  </footer> -->
+  </footer>
 </body>
 </html>

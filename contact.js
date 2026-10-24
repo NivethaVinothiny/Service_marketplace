@@ -2,16 +2,16 @@
 const contactForm = document.getElementById("contactForm");
 const formFeedback = document.getElementById("formFeedback");
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+const navToggle = document.getElementById("nav-toggle");
+const navMenu = document.getElementById("nav-menu");
 
 // Mobile navigation
-menuToggle.addEventListener("click", function () {
-  const isOpen = navLinks.classList.toggle("show");
-
-  menuToggle.setAttribute("aria-expanded", isOpen);
-  menuToggle.textContent = isOpen ? "✕" : "☰";
-});
+if (navToggle && navMenu) {
+  navToggle.addEventListener("click", function () {
+    const isOpen = navMenu.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", isOpen);
+  });
+}
 
 // Contact form validation
 contactForm.addEventListener("submit", function (event) {

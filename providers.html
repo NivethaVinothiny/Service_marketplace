@@ -1,354 +1,715 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskNest - Service Providers</title>
-    <!-- Google Fonts: Lexend Deca -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Lexend Deca"', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: '#255744',
-                        primaryHover: '#1e4637',
-                        softBg: '#f4f7f5'
-                    },
-                    boxShadow: {
-                        'custom-card': '0 4px 20px -2px rgba(37, 87, 68, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
-                        'card-hover': '0 10px 25px -5px rgba(37, 87, 68, 0.15), 0 8px 10px -6px rgba(37, 87, 68, 0.1)'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskNest Service Providers - Find verified local experts matched to your city and area.">
+  <title>TaskNest | Service Providers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="home.css">
+  
+  <style>
+    .providers-main-hero {
+      padding: 50px 0 30px;
+      width: min(var(--page-width), 100% - 64px);
+      margin: 0 auto;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 40px;
+    }
+    .providers-main-hero h1 {
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .providers-main-hero p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Highlighted Best Match Banner Styling */
+    .highlight-banner-section {
+      width: min(var(--page-width), 100% - 64px);
+      margin: 0 auto 50px auto;
+      padding: 30px;
+      background: linear-gradient(135deg, #E8F0EB 0%, #D5E5DB 100%);
+      border-radius: 24px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 12px 35px rgba(31, 78, 56, 0.12);
+      display: none;
+    }
+    .highlight-banner-section h2 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .providers-page-container {
+      width: min(var(--page-width), 100% - 64px);
+      margin: 0 auto 80px auto;
+    }
+    .cat-section-block {
+      margin-bottom: 50px;
+    }
+    .cat-heading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 8px;
+    }
+    .cat-heading-row h2 {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    .scroll-hint {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+  </style>
 </head>
-<body class="bg-softBg text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <!-- Navbar -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl font-bold text-primary">🌿 TaskNest</span>
-            </div>
-            
-            <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="index.html" class="hover:text-primary transition">Home</a>
-                <a href="services.html" class="hover:text-primary transition">Services</a>
-                <a href="providers.html" class="text-primary font-semibold">Service Providers</a>
-                <a href="bookings.html" class="hover:text-primary transition">Bookings</a>
-                <a href="contact.html" class="hover:text-primary transition">Contact Us</a>
-            </nav>
+  <!-- NAVIGATION BAR -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="logo" href="index.html" aria-label="TaskNest home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M4 11 12 4l8 7M6 10v9h12v-9M10 19v-5h4v5"/></svg>
+        </span>
+        <span class="logo-text">TaskNest</span>
+      </a>
 
-            <div class="hidden md:block">
-                <a href="bookings.html" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primaryHover transition">Book Service</a>
-            </div>
+      <button class="nav-toggle" id="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
 
-            <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+      <div class="nav-panel" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="providers.html" class="nav-link active" aria-current="page">Service Providers</a></li>
+          <li><a href="booking.html" class="nav-link">Booking</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="side-login-item"><a href="login.html" class="nav-link login-link-special">✨ Login</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a class="btn btn-primary nav-cta" href="booking.html">Book Service</a>
         </div>
+      </div>
+    </nav>
+  </header>
 
-        <!-- Mobile Sidenavbar -->
-        <div id="mobile-menu" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity">
-            <div class="absolute right-0 top-0 bottom-0 w-72 bg-white shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300" id="sidenav-panel">
-                <div>
-                    <div class="flex justify-between items-center mb-8">
-                        <span class="text-xl font-bold text-primary">🌿 TaskNest</span>
-                        <button id="close-btn" class="text-gray-500 hover:text-gray-800 focus:outline-none">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <nav class="flex flex-col space-y-4 text-base font-medium">
-                        <a href="index.html" class="hover:text-primary transition">Home</a>
-                        <a href="services.html" class="hover:text-primary transition">Services</a>
-                        <a href="providers.html" class="text-primary font-semibold">Service Providers</a>
-                        <a href="bookings.html" class="hover:text-primary transition">Bookings</a>
-                        <a href="contact.html" class="hover:text-primary transition">Contact Us</a>
-                    </nav>
-                </div>
-                <div>
-                    <a href="bookings.html" class="block text-center bg-primary text-white py-2.5 rounded-lg text-sm font-medium hover:bg-primaryHover transition">Book Service</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Section -->
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-            <div>
-                <h1 class="text-3xl font-bold text-primary mb-2">Service Providers</h1>
-                <p class="text-gray-600 text-sm md:text-base">Choose your city to find multiple verified experts across core categories.</p>
-            </div>
-            
-            <!-- City Selection Dropdown -->
-            <div class="bg-white p-3 rounded-xl shadow-custom-card flex items-center space-x-3 w-full md:w-fit">
-                <span class="text-sm font-medium text-gray-700 whitespace-nowrap">📍 Select City:</span>
-                <select id="location-select" class="border border-gray-300 rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white w-full">
-                    <option value="all">All Cities</option>
-                    <option value="Coimbatore">Coimbatore</option>
-                    <option value="Chennai">Chennai</option>
-                    <option value="Madurai">Madurai</option>
-                    <option value="Salem">Salem</option>
-                    <option value="Trichy">Trichy</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Categories Container -->
-        <div id="categories-container" class="space-y-10"></div>
-    </main>
-
-    <!-- Booking Details & Call Popup Modal -->
-    <div id="booking-modal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative transform transition-all">
-            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            
-            <h3 id="modal-provider-name" class="text-xl font-bold text-primary mb-1">Provider Name</h3>
-            <p id="modal-provider-specialty" class="text-xs font-semibold text-gray-500 mb-3">Specialty</p>
-            
-            <div class="text-xs text-gray-600 space-y-2 mb-6 bg-softBg p-4 rounded-xl border border-gray-100">
-                <p><strong>About:</strong> <span id="modal-provider-desc">Description goes here...</span></p>
-                <p><strong>Location / Area:</strong> <span id="modal-provider-area">Area, City</span></p>
-                <p><strong>Phone Number:</strong> <span id="modal-provider-phone" class="text-primary font-bold">+91 98765 43210</span></p>
-            </div>
-
-            <!-- Call & Confirm Booking Action -->
-            <a id="call-action-btn" href="#" class="block text-center bg-primary text-white py-3 rounded-xl text-xs font-semibold hover:bg-primaryHover transition shadow-sm">
-                📞 Call & Confirm Booking
-            </a>
-        </div>
+  <main id="main-content">
+    <div class="providers-main-hero">
+      <h1 class="glow-text">Service Providers</h1>
+      <p id="heroSubtitle">Browse verified local experts matched to your required service and location.</p>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-primary text-white mt-16 pt-12 pb-8">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-                <h3 class="text-lg font-bold mb-3">🌿 TaskNest</h3>
-                <p class="text-xs text-gray-200 leading-relaxed">Your Vision. Our Expertise. One Future, Built Together. Connecting you with verified home service experts.</p>
-            </div>
-            <div>
-                <h4 class="text-sm font-semibold mb-3 tracking-wider uppercase text-gray-300">Quick Links</h4>
-                <ul class="space-y-2 text-xs">
-                    <li><a href="index.html" class="hover:underline">Home</a></li>
-                    <li><a href="services.html" class="hover:underline">Services</a></li>
-                    <li><a href="providers.html" class="hover:underline">Service Providers</a></li>
-                    <li><a href="bookings.html" class="hover:underline">Bookings</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-sm font-semibold mb-3 tracking-wider uppercase text-gray-300">4 Core Services</h4>
-                <ul class="space-y-2 text-xs text-gray-200">
-                    <li>Carpentry & Woodwork</li>
-                    <li>Electrical & Wiring</li>
-                    <li>Plumbing & Sanitary</li>
-                    <li>Painting & Textures</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-sm font-semibold mb-3 tracking-wider uppercase text-gray-300">Contact</h4>
-                <p class="text-xs text-gray-200 mb-2">📍 Tamil Nadu, India</p>
-                <p class="text-xs text-gray-200 mb-2">📞 +91 98765 43210</p>
-                <p class="text-xs text-gray-200">✉️ support@tasknest.com</p>
-            </div>
+    <!-- HIGHLIGHTED MATCHED PROVIDER BANNER (TOP ROW) -->
+    <section class="highlight-banner-section" id="highlightBanner">
+      <h2 id="highlightTitle">✨ Best Match for Your Area</h2>
+      <div class="flex gap-6 overflow-x-auto pb-4 scroll-smooth" id="highlightCardWrap"></div>
+    </section>
+
+    <div class="providers-page-container">
+      
+      <!-- 1. CARPENTRY SERVICES -->
+      <section class="cat-section-block" data-category="carpentry">
+        <div class="cat-heading-row">
+          <h2>🪵 Carpentry & Woodwork</h2>
+          <span class="scroll-hint">Scroll horizontally ➔</span>
         </div>
-        <div class="max-w-7xl mx-auto px-4 pt-6 border-t border-white/10 text-center text-xs text-gray-300">
-            <p>&copy; 2026 TaskNest Services. All rights reserved.</p>
+        <div class="flex gap-6 overflow-x-auto pb-4 scroll-smooth">
+          
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Coimbatore" data-name="Anbu Selvan">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Anbu Selvan" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Anbu Selvan</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Custom Furniture & Wardrobes</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (120 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 Peelamedu, Coimbatore</span></div>
+            </div>
+            <a href="booking.html?provider=Anbu%20Selvan&service=Custom%20Furniture" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Coimbatore" data-name="Karthik Kumar">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Karthik Kumar" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Karthik Kumar</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Modular Kitchen Setup</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.6 (95 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 4 Years</span><span>Location: 📍 RS Puram, Coimbatore</span></div>
+            </div>
+            <a href="booking.html?provider=Karthik%20Kumar&service=Modular%20Kitchen" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Chennai" data-name="Vijay Anand">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Vijay Anand" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Vijay Anand</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Modular Kitchens & Interiors</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.9 (140 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 8 Years</span><span>Location: 📍 T. Nagar, Chennai</span></div>
+            </div>
+            <a href="booking.html?provider=Vijay%20Anand&service=Modular%20Kitchens" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Chennai" data-name="Arun Sundar">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="Arun Sundar" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Arun Sundar</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Wooden Partition & Flooring</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (110 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 Anna Nagar, Chennai</span></div>
+            </div>
+            <a href="booking.html?provider=Arun%20Sundar&service=Wooden%20Partition" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Madurai" data-name="Manikandan">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Manikandan" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Manikandan</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Wooden Doors & Windows</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (80 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 KK Nagar, Madurai</span></div>
+            </div>
+            <a href="booking.html?provider=Manikandan&service=Wooden%20Doors" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Madurai" data-name="Pandian">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Pandian" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Pandian</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Antique Wood Restoration</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (90 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 7 Years</span><span>Location: 📍 Tallakulam, Madurai</span></div>
+            </div>
+            <a href="booking.html?provider=Pandian&service=Antique%20Wood" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Salem" data-name="Senthil Nathan">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=80" alt="Senthil Nathan" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Senthil Nathan</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Sofa & Bed Assembly</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (65 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 Fairlands, Salem</span></div>
+            </div>
+            <a href="booking.html?provider=Senthil%20Nathan&service=Sofa%20Assembly" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Salem" data-name="Murugan">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Murugan" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Murugan</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Custom TV Units</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.6 (50 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 4 Years</span><span>Location: 📍 Ammapet, Salem</span></div>
+            </div>
+            <a href="booking.html?provider=Murugan&service=TV%20Units" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Trichy" data-name="Selvam">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Selvam" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Selvam</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Wooden Almirahs & Racks</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.9 (75 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 7 Years</span><span>Location: 📍 Thillai Nagar, Trichy</span></div>
+            </div>
+            <a href="booking.html?provider=Selvam&service=Wooden%20Racks" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Trichy" data-name="Kannan">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Kannan" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Kannan</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Plywood & Laminate Work</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (60 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 Cantonment, Trichy</span></div>
+            </div>
+            <a href="booking.html?provider=Kannan&service=Laminate%20Work" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
         </div>
-    </footer>
+      </section>
 
-    <!-- JavaScript -->
-    <script>
-        const providersData = [
-            // ================= COIMBATORE =================
-            { id: 1, name: "Anbu Selvan", category: "carpentry", city: "Coimbatore", area: "Saravanampatti", exp: "5 Years", specialty: "Custom Furniture & Wardrobes", rating: "4.8", reviews: "120", phone: "+919845123456", desc: "Expert carpenter with 5+ years experience in modern custom wooden furniture.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" },
-            { id: 2, name: "Karthik Kumar", category: "carpentry", city: "Coimbatore", area: "RS Puram", exp: "4 Years", specialty: "Modular Kitchen Setup", rating: "4.6", reviews: "95", phone: "+919845211111", desc: "Specializes in kitchen assembly, storage units, and wooden interior work.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
-            { id: 3, name: "Suresh Raj", category: "electrical", city: "Coimbatore", area: "Peelamedu", exp: "7 Years", specialty: "Home Wiring & Lighting", rating: "4.9", reviews: "210", phone: "+919845234567", desc: "Certified master electrician specializing in residential wiring and LED setups.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" },
-            { id: 4, name: "Vimal V", category: "electrical", city: "Coimbatore", area: "Saibaba Colony", exp: "3 Years", specialty: "Home Automation & Fans", rating: "4.7", reviews: "88", phone: "+919845222222", desc: "Expert in smart home automation, fan installations, and switchboard repairs.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" },
-            { id: 5, name: "Murali Krishnan", category: "plumbing", city: "Coimbatore", area: "Gandhipuram", exp: "6 Years", specialty: "Pipe Leakages & Fittings", rating: "4.8", reviews: "145", phone: "+919845345678", desc: "Specializes in pipe leak detection, sanitary installations, and motor repairs.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
-            { id: 6, name: "Arun Prakash", category: "plumbing", city: "Coimbatore", area: "Town Hall", exp: "3 Years", specialty: "Water Tank Cleaning", rating: "4.5", reviews: "64", phone: "+919845333333", desc: "Expert in water tank cleaning, blockage clearance, and valve replacements.", img: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80" },
-            { id: 7, name: "Divya Ramesh", category: "painting", city: "Coimbatore", area: "Ramanathapuram", exp: "8 Years", specialty: "Wall Textures & Murals", rating: "4.9", reviews: "175", phone: "+919845456789", desc: "Professional mural artist and wall texture specialist for modern homes.", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" },
-            { id: 8, name: "Selvamani", category: "painting", city: "Coimbatore", area: "Ukkadam", exp: "4 Years", specialty: "Waterproofing & Emulsion", rating: "4.6", reviews: "90", phone: "+919845444444", desc: "Reliable painter offering damp-proof waterproofing and smooth wall coats.", img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" },
+      <!-- 2. ELECTRICAL WORKS -->
+      <section class="cat-section-block" data-category="electrical">
+        <div class="cat-heading-row">
+          <h2>⚡ Electrical & Wiring</h2>
+          <span class="scroll-hint">Scroll horizontally ➔</span>
+        </div>
+        <div class="flex gap-6 overflow-x-auto pb-4 scroll-smooth">
+          
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Coimbatore" data-name="Suresh Raj">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="Suresh Raj" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Suresh Raj</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Home Wiring & Lighting</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.9 (210 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 7 Years</span><span>Location: 📍 Peelamedu, Coimbatore</span></div>
+            </div>
+            <a href="booking.html?provider=Suresh%20Raj&service=Home%20Wiring" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-            // ================= CHENNAI =================
-            { id: 9, name: "Vijay Anand", category: "carpentry", city: "Chennai", area: "T. Nagar", exp: "8 Years", specialty: "Modular Kitchens & Interiors", rating: "4.9", reviews: "140", phone: "+919711122334", desc: "Commercial & residential carpentry expert in modular kitchens.", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" },
-            { id: 10, name: "Senthil Kumar", category: "carpentry", city: "Chennai", area: "Velachery", exp: "5 Years", specialty: "Custom Doors & Almirahs", rating: "4.7", reviews: "82", phone: "+919711155555", desc: "Skilled carpenter for custom wardrobes, TV units, and wooden door frames.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
-            { id: 11, name: "Ram Kumar", category: "electrical", city: "Chennai", area: "Adyar", exp: "9 Years", specialty: "Home Electricals & Stabilizers", rating: "5.0", reviews: "190", phone: "+919722233445", desc: "Reliable electrician handling major household appliances and high-load wiring.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
-            { id: 12, name: "Kishore Babu", category: "electrical", city: "Chennai", area: "Anna Nagar", exp: "4 Years", specialty: "Inverter & UPS Setup", rating: "4.6", reviews: "73", phone: "+919722266666", desc: "Specialist in backup power setups, circuit troubleshooting, and panel boards.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" },
-            { id: 13, name: "Chandran", category: "plumbing", city: "Chennai", area: "Porur", exp: "7 Years", specialty: "Sanitaryware Installation", rating: "4.8", reviews: "115", phone: "+919733344556", desc: "Expert in blocked drain clearing, water tank cleaning, and bathroom fixtures.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" },
-            { id: 14, name: "Elango", category: "plumbing", city: "Chennai", area: "Tambaram", exp: "5 Years", specialty: "Motor & Water Pumps", rating: "4.7", reviews: "91", phone: "+919733377777", desc: "Specializes in automatic water pump installation, borewell checks, and leak repairs.", img: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80" },
-            { id: 15, name: "Sundar Raj", category: "painting", city: "Chennai", area: "Mylapore", exp: "9 Years", specialty: "Royal Emulsion Finishes", rating: "5.0", reviews: "160", phone: "+919744455667", desc: "Delivers premium royal emulsion finishes and exterior wall painting.", img: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80" },
-            { id: 16, name: "Nandhini", category: "painting", city: "Chennai", area: "Nungambakkam", exp: "4 Years", specialty: "Kids Room & Stencils", rating: "4.6", reviews: "68", phone: "+919744488888", desc: "Creative wall decorator specializing in kids theme art and textured stencils.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" },
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Coimbatore" data-name="Ganesh">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Ganesh" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Ganesh</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">AC & Inverter Repair</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (112 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 Gandhipuram, Coimbatore</span></div>
+            </div>
+            <a href="booking.html?provider=Ganesh&service=AC%20Repair" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-            // ================= MADURAI =================
-            { id: 17, name: "Manikandan", category: "carpentry", city: "Madurai", area: "KK Nagar", exp: "6 Years", specialty: "Wooden Doors & Windows", rating: "4.7", reviews: "80", phone: "+919611111222", desc: "Traditional and contemporary wooden door craftsperson with custom frames.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
-            { id: 18, name: "Prabhu", category: "carpentry", city: "Madurai", area: "Anna Nagar", exp: "4 Years", specialty: "Bed & Sofa Assembly", rating: "4.5", reviews: "54", phone: "+919611133333", desc: "Fast and reliable assembly carpenter for beds, tables, and storage units.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
-            { id: 19, name: "Bala Murugan", category: "electrical", city: "Madurai", area: "Vilangudi", exp: "5 Years", specialty: "AC & Appliance Repair", rating: "4.6", reviews: "75", phone: "+919622222333", desc: "Specialized in quick diagnosis and repair of AC units, fans, and wiring faults.", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" },
-            { id: 20, name: "Ashok", category: "electrical", city: "Madurai", area: "Tallakulam", exp: "6 Years", specialty: "Lighting & Switchboards", rating: "4.8", reviews: "92", phone: "+919622244444", desc: "Expert in decorative lighting, chandelier setups, and power distribution boards.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" },
-            { id: 21, name: "Saravanan", category: "plumbing", city: "Madurai", area: "Simmakkal", exp: "5 Years", specialty: "Bathroom Renovations", rating: "4.7", reviews: "98", phone: "+919633333444", desc: "Full bathroom remodeling service provider, including pipeline re-routing.", img: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80" },
-            { id: 22, name: "Muthu", category: "plumbing", city: "Madurai", area: "Periyar", exp: "4 Years", specialty: "Tap & Drain Clearing", rating: "4.5", reviews: "60", phone: "+919633355555", desc: "Quick response plumber for blocked drains, leaky faucets, and flush tanks.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" },
-            { id: 23, name: "Meena Kumari", category: "painting", city: "Madurai", area: "Sellur", exp: "5 Years", specialty: "Interior Stencils & Art", rating: "4.7", reviews: "85", phone: "+919644444555", desc: "Creative painter specializing in designer stencils and aesthetic wall finishes.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" },
-            { id: 24, name: "Raja", category: "painting", city: "Madurai", area: "Teppakulam", exp: "7 Years", specialty: "Exterior & Enamel Paints", rating: "4.8", reviews: "102", phone: "+919644466666", desc: "Experienced painter for strong exterior coats, gate painting, and putty work.", img: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80" },
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Chennai" data-name="Kishore Babu">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Kishore Babu" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Kishore Babu</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Inverter & UPS Setup</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.6 (73 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 4 Years</span><span>Location: 📍 Anna Nagar, Chennai</span></div>
+            </div>
+            <a href="booking.html?provider=Kishore%20Babu&service=Inverter%20Setup" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-            // ================= SALEM =================
-            { id: 25, name: "Prabhu Deva", category: "carpentry", city: "Salem", area: "Fairlands", exp: "7 Years", specialty: "Antique Wood Restoration", rating: "4.9", reviews: "110", phone: "+919511155667", desc: "Skilled in restoring antique wooden furniture and creating sturdy storage.", img: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80" },
-            { id: 26, name: "Murugan", category: "carpentry", city: "Salem", area: "Ammapet", exp: "5 Years", specialty: "Modular Wardrobes", rating: "4.6", reviews: "74", phone: "+919511177777", desc: "Specializes in sliding wardrobes, loft covers, and plywood partitions.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
-            { id: 27, name: "Ashok Kumar", category: "electrical", city: "Salem", area: "Hasthampatti", exp: "6 Years", specialty: "Inverter & UPS Setup", rating: "4.8", reviews: "92", phone: "+919522266778", desc: "Expert in home UPS configuration, safety grounding, and circuit breakers.", img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" },
-            { id: 28, name: "Sathish", category: "electrical", city: "Salem", area: "Suramangalam", exp: "4 Years", specialty: "Wiring & Fan Fixes", rating: "4.5", reviews: "63", phone: "+919522288888", desc: "Reliable technician for regular maintenance, house wiring, and light fittings.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" },
-            { id: 29, name: "Palanivel", category: "plumbing", city: "Salem", area: "Gugai", exp: "8 Years", specialty: "Sewage Clearing & Pipes", rating: "4.9", reviews: "130", phone: "+919533377889", desc: "Plumber specializing in sewage clearing and heavy residential water lines.", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" },
-            { id: 30, name: "Ganesan", category: "plumbing", city: "Salem", area: "Seelanaickenpatti", exp: "4 Years", specialty: "Bathroom Fittings", rating: "4.6", reviews: "71", phone: "+919533399999", desc: "Expert in showerheads, geyser pipelines, and washbasin fittings.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
-            { id: 31, name: "Kannan", category: "painting", city: "Salem", area: "Omalur Main Road", exp: "6 Years", specialty: "Exterior Wall Coating", rating: "4.8", reviews: "105", phone: "+919544488990", desc: "Weather-resistant exterior paint specialist offering protective coatings.", img: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=150&q=80" },
-            { id: 32, name: "Velu", category: "painting", city: "Salem", area: "Collectorate", exp: "5 Years", specialty: "Interior Emulsion & Putty", rating: "4.7", reviews: "84", phone: "+919544400000", desc: "Professional painter for wall putty work, primer, and smooth emulsion coats.", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" },
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Chennai" data-name="Sathish">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Sathish" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Sathish</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Smart Home Automation</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.9 (130 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 8 Years</span><span>Location: 📍 Adyar, Chennai</span></div>
+            </div>
+            <a href="booking.html?provider=Sathish&service=Smart%20Home" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-            // ================= TRICHY =================
-            { id: 33, name: "Karthikeyan", category: "carpentry", city: "Trichy", area: "Cantonment", exp: "5 Years", specialty: "Bed & Sofa Assembly", rating: "4.6", reviews: "70", phone: "+919411199001", desc: "Quick and efficient carpenter for all assembly work and custom shelving.", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" },
-            { id: 34, name: "Baskar", category: "carpentry", city: "Trichy", area: "Thillai Nagar", exp: "6 Years", specialty: "Wooden Partition & Doors", rating: "4.8", reviews: "94", phone: "+919411122222", desc: "Expert woodworker for office partitions, elegant doors, and custom frames.", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" },
-            { id: 35, name: "Senthil Nathan", category: "electrical", city: "Trichy", area: "Srirangam", exp: "4 Years", specialty: "Fan & Light Fixtures", rating: "4.7", reviews: "82", phone: "+919422200112", desc: "Reliable electrician for ceiling fans, chandeliers, and switchboard repairs.", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" },
-            { id: 36, name: "Ramesh", category: "electrical", city: "Trichy", area: "Airport", exp: "7 Years", specialty: "AC Wiring & Heavy Loads", rating: "4.9", reviews: "125", phone: "+919422233333", desc: "Specializes in heavy load electrical setups, AC wiring, and MCB protection.", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" },
-            { id: 37, name: "Vignesh", category: "plumbing", city: "Trichy", area: "Woraiyur", exp: "5 Years", specialty: "Tap & Valve Replacements", rating: "4.7", reviews: "89", phone: "+919433311223", desc: "Prompt plumbing services for leakages, taps, showers, and flush tanks.", img: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=150&q=80" },
-            { id: 38, name: "Anandan", category: "plumbing", city: "Trichy", area: "Chatram Bus Stand", exp: "6 Years", specialty: "Pipeline & Tank Leakage", rating: "4.8", reviews: "108", phone: "+919433344444", desc: "Expert in underground pipeline fixing, overhead tank repairs, and valves.", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" },
-            { id: 39, name: "Anbu Selvi", category: "painting", city: "Trichy", area: "KK Nagar", exp: "7 Years", specialty: "Eco-friendly Wall Painting", rating: "4.8", reviews: "112", phone: "+919444422334", desc: "Expert in non-toxic, eco-friendly wall painting and textured designer finishes.", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&q=80" },
-            { id: 40, name: "Kumar", category: "painting", city: "Trichy", area: "Tharanallur", exp: "5 Years", specialty: "Texture & Primer Finishes", rating: "4.6", reviews: "81", phone: "+919444455555", desc: "Specializes in royal play textures, spray painting, and interior primers.", img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" }
-        ];
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Madurai" data-name="Ashok">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Ashok" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Ashok</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Lighting & Switchboards</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (92 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 Tallakulam, Madurai</span></div>
+            </div>
+            <a href="booking.html?provider=Ashok&service=Lighting" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-        const categoriesMeta = [
-            { key: 'carpentry', title: 'Carpentry Services' },
-            { key: 'electrical', title: 'Electrical Works' },
-            { key: 'plumbing', title: 'Plumbing Services' },
-            { key: 'painting', title: 'Painting Services' }
-        ];
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Madurai" data-name="Bala">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Bala" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Bala</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">MCB & Fuse Box Repair</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (70 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 KK Nagar, Madurai</span></div>
+            </div>
+            <a href="booking.html?provider=Bala&service=MCB%20Repair" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-        const container = document.getElementById('categories-container');
-        const locationSelect = document.getElementById('location-select');
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Salem" data-name="Ashok Kumar">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Ashok Kumar" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Ashok Kumar</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Inverter & UPS Setup</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (92 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 Hasthampatti, Salem</span></div>
+            </div>
+            <a href="booking.html?provider=Ashok%20Kumar&service=Inverter%20Setup" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-        // Modal Elements
-        const modal = document.getElementById('booking-modal');
-        const closeModalBtn = document.getElementById('close-modal');
-        const modalName = document.getElementById('modal-provider-name');
-        const modalSpecialty = document.getElementById('modal-provider-specialty');
-        const modalDesc = document.getElementById('modal-provider-desc');
-        const modalArea = document.getElementById('modal-provider-area');
-        const modalPhone = document.getElementById('modal-provider-phone');
-        const callActionBtn = document.getElementById('call-action-btn');
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Salem" data-name="Prakash">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=80" alt="Prakash" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Prakash</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Fan & Fixture Hanging</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.6 (55 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 4 Years</span><span>Location: 📍 Ammapet, Salem</span></div>
+            </div>
+            <a href="booking.html?provider=Prakash&service=Fan%20Installation" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const closeBtn = document.getElementById('close-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const sidenavPanel = document.getElementById('sidenav-panel');
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Trichy" data-name="Karthikeyan">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Karthikeyan" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Karthikeyan</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Complete Home Rewiring</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.9 (95 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 8 Years</span><span>Location: 📍 Thillai Nagar, Trichy</span></div>
+            </div>
+            <a href="booking.html?provider=Karthikeyan&service=Home%20Rewiring" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-            setTimeout(() => sidenavPanel.classList.remove('translate-x-full'), 10);
-        });
-        
-        function closeMenu() {
-            sidenavPanel.classList.add('translate-x-full');
-            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-        }
-        
-        closeBtn.addEventListener('click', closeMenu);
-        mobileMenu.addEventListener('click', (e) => { if (e.target === mobileMenu) closeMenu(); });
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Trichy" data-name="Vignesh">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Vignesh" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Vignesh</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Appliance Power Points</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (62 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 Cantonment, Trichy</span></div>
+            </div>
+            <a href="booking.html?provider=Vignesh&service=Power%20Points" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-        // Render Providers based on selected city
-        function renderProviders() {
-            const selectedCity = locationSelect.value;
-            container.innerHTML = '';
-            let hasResults = false;
+        </div>
+      </section>
 
-            categoriesMeta.forEach(cat => {
-                const filtered = providersData.filter(p => {
-                    const matchesCategory = p.category === cat.key;
-                    const matchesCity = selectedCity === 'all' || p.city === selectedCity;
-                    return matchesCategory && matchesCity;
-                });
+      <!-- 3. PLUMBING SERVICES -->
+      <section class="cat-section-block" data-category="plumbing">
+        <div class="cat-heading-row">
+          <h2>🔧 Plumbing & Sanitary</h2>
+          <span class="scroll-hint">Scroll horizontally ➔</span>
+        </div>
+        <div class="flex gap-6 overflow-x-auto pb-4 scroll-smooth">
+          
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Coimbatore" data-name="Murali Krishnan">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=80" alt="Murali Krishnan" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Murali Krishnan</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Pipe Leakages & Fittings</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (145 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 Gandhipuram, Coimbatore</span></div>
+            </div>
+            <a href="booking.html?provider=Murali%20Krishnan&service=Pipe%20Leakages" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
 
-                if (filtered.length > 0) {
-                    hasResults = true;
-                    const sectionDiv = document.createElement('div');
-                    sectionDiv.innerHTML = `
-                        <div class="flex items-center justify-between mb-4">
-                            <h2 class="text-xl font-bold text-gray-900 border-l-4 border-primary pl-3">${cat.title}</h2>
-                            <span class="text-xs text-gray-500 font-medium">Scroll horizontally ➔</span>
-                        </div>
-                        <div class="flex overflow-x-auto space-x-6 pb-4 pt-1 no-scrollbar scroll-smooth">
-                            ${filtered.map(p => `
-                                <div class="min-w-[280px] md:min-w-[320px] bg-white p-6 rounded-2xl shadow-custom-card border border-gray-100 flex flex-col justify-between flex-shrink-0 hover:shadow-card-hover transition duration-300">
-                                    <div>
-                                        <div class="flex items-center space-x-4 mb-4">
-                                            <img src="${p.img}" alt="${p.name}" class="w-16 h-16 rounded-full object-cover border-2 border-primary/20">
-                                            <div>
-                                                <h3 class="font-bold text-base text-gray-900">${p.name}</h3>
-                                                <p class="text-xs text-primary font-semibold">${p.specialty}</p>
-                                                <p class="text-xs text-gray-500 mt-0.5">⭐ ${p.rating} (${p.reviews} reviews)</p>
-                                            </div>
-                                        </div>
-                                        <div class="text-xs text-gray-600 space-y-1 mb-4 bg-softBg p-3 rounded-xl border border-gray-100">
-                                            <p><strong>Experience:</strong> ${p.exp}</p>
-                                            <p><strong>Location:</strong> 📍 ${p.area},${p.city}</p>
-                                        </div>
-                                    </div>
-                                    <button onclick='openBookingModal(${JSON.stringify(p)})' class="w-full text-center bg-primary text-white py-2.5 rounded-xl text-xs font-semibold hover:bg-primaryHover transition shadow-sm">Book Profile</button>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                    container.appendChild(sectionDiv);
-                }
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Coimbatore" data-name="Prabhu">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Prabhu" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Prabhu</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Water Motor Pump Repair</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (98 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 Peelamedu, Coimbatore</span></div>
+            </div>
+            <a href="booking.html?provider=Prabhu&service=Motor%20Repair" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Chennai" data-name="Chandran">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Chandran" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Chandran</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Sanitaryware Installation</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (115 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 7 Years</span><span>Location: 📍 Porur, Chennai</span></div>
+            </div>
+            <a href="booking.html?provider=Chandran&service=Sanitaryware" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Chennai" data-name="Logu">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Logu" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Logu</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Bathroom Renovation</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.9 (140 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 9 Years</span><span>Location: 📍 Velachery, Chennai</span></div>
+            </div>
+            <a href="booking.html?provider=Logu&service=Bathroom%20Reno" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Madurai" data-name="Saravanan">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="Saravanan" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Saravanan</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Drainage & Blockage Clearing</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (85 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 Anna Nagar, Madurai</span></div>
+            </div>
+            <a href="booking.html?provider=Saravanan&service=Drainage%20Clearing" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Madurai" data-name="Senthil">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Senthil" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Senthil</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Water Tank Deep Cleaning</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (94 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 Bypass Road, Madurai</span></div>
+            </div>
+            <a href="booking.html?provider=Senthil&service=Tank%20Cleaning" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Salem" data-name="Dinesh">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Dinesh" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Dinesh</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Tap & Faucet Replacement</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.6 (68 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 4 Years</span><span>Location: 📍 Fairlands, Salem</span></div>
+            </div>
+            <a href="booking.html?provider=Dinesh&service=Faucet%20Replacement" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Salem" data-name="Kumar">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Kumar" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Kumar</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Geyser Plumbing Setup</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (72 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 Suramangalam, Salem</span></div>
+            </div>
+            <a href="booking.html?provider=Kumar&service=Geyser%20Setup" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Trichy" data-name="Ramesh">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=80" alt="Ramesh" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Ramesh</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Water Tank Cleaning & Motors</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (88 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 Thillai Nagar, Trichy</span></div>
+            </div>
+            <a href="booking.html?provider=Ramesh&service=Water%20Tank%20Cleaning" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Trichy" data-name="Anbu">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Anbu" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Anbu</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Leak Detection & Sealing</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (79 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 Srirangam, Trichy</span></div>
+            </div>
+            <a href="booking.html?provider=Anbu&service=Leak%20Detection" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. PAINTING SERVICES -->
+      <section class="cat-section-block" data-category="painting">
+        <div class="cat-heading-row">
+          <h2>🎨 Painting & Textures</h2>
+          <span class="scroll-hint">Scroll horizontally ➔</span>
+        </div>
+        <div class="flex gap-6 overflow-x-auto pb-4 scroll-smooth">
+          
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Coimbatore" data-name="Divya Ramesh">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Divya Ramesh" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Divya Ramesh</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Wall Textures & Murals</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.9 (175 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 8 Years</span><span>Location: 📍 Ramanathapuram, Coimbatore</span></div>
+            </div>
+            <a href="booking.html?provider=Divya%20Ramesh&service=Wall%20Textures" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Coimbatore" data-name="Kavitha">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Kavitha" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Kavitha</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Interior Emulsion Painting</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (110 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 RS Puram, Coimbatore</span></div>
+            </div>
+            <a href="booking.html?provider=Kavitha&service=Interior%20Painting" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Chennai" data-name="Sundar Raj">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Sundar Raj" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Sundar Raj</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Royal Emulsion Finishes</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 5.0 (160 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 9 Years</span><span>Location: 📍 Mylapore, Chennai</span></div>
+            </div>
+            <a href="booking.html?provider=Sundar%20Raj&service=Royal%20Emulsion" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Chennai" data-name="Raghavan">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Raghavan" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Raghavan</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Exterior Weathercoat</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (95 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 7 Years</span><span>Location: 📍 Velachery, Chennai</span></div>
+            </div>
+            <a href="booking.html?provider=Raghavan&service=Exterior%20Weathercoat" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Madurai" data-name="Meena">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Meena" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Meena</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Kids Room Stencil Art</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (82 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 KK Nagar, Madurai</span></div>
+            </div>
+            <a href="booking.html?provider=Meena&service=Stencil%20Art" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Madurai" data-name="Vasu">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Vasu" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Vasu</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Waterproofing & Damp Proof</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (76 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 Tallakulam, Madurai</span></div>
+            </div>
+            <a href="booking.html?provider=Vasu&service=Waterproofing" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Salem" data-name="Karthikeyan P">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80" alt="Karthikeyan P" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Karthikeyan P</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Wood & Metal Polishing</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.6 (59 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 5 Years</span><span>Location: 📍 Fairlands, Salem</span></div>
+            </div>
+            <a href="booking.html?provider=Karthikeyan%20P&service=Wood%20Polishing" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Salem" data-name="Senthil Kumar">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Senthil Kumar" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Senthil Kumar</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Ceiling & POP Painting</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.8 (83 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 7 Years</span><span>Location: 📍 Hasthampatti, Salem</span></div>
+            </div>
+            <a href="booking.html?provider=Senthil%20Kumar&service=POP%20Painting" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Trichy" data-name="Naveen">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=80" alt="Naveen" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Naveen</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Designer Wall Textures</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.9 (104 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 8 Years</span><span>Location: 📍 Thillai Nagar, Trichy</span></div>
+            </div>
+            <a href="booking.html?provider=Naveen&service=Designer%20Textures" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+          <div class="bg-white rounded-2xl p-5 min-w-[280px] max-w-[280px] flex-shrink-0 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 border border-emerald-900/10 hover:-translate-y-1.5" data-city="Trichy" data-name="Aravind">
+            <div>
+              <div class="w-16 h-16 rounded-full overflow-hidden mb-3 bg-emerald-100"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Aravind" class="w-full h-full object-cover"></div>
+              <h3 class="font-bold text-lg text-emerald-950 mb-1">Aravind</h3>
+              <p class="text-sm text-gray-600 mb-2 font-medium">Interior & Gate Painting</p>
+              <p class="font-bold text-amber-600 text-sm mb-3">⭐ 4.7 (75 reviews)</p>
+              <div class="text-xs text-gray-500 flex flex-col gap-1 mb-4"><span>Experience: 6 Years</span><span>Location: 📍 Cantonment, Trichy</span></div>
+            </div>
+            <a href="booking.html?provider=Aravind&service=Gate%20Painting" class="btn btn-primary glow-btn text-center py-2.5 rounded-xl text-sm font-semibold">Book Profile</a>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">🌿 TaskNest</div>
+          <p class="footer-desc">Your Vision. Our Expertise. One Future, Built Together. Connecting you with verified home service experts.</p>
+        </div>
+        <div class="footer-col">
+          <h3>QUICK LINKS</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="providers.html">Service Providers</a></li>
+            <li><a href="booking.html">Bookings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>4 CORE SERVICES</h3>
+          <ul>
+            <li>Carpentry & Woodwork</li>
+            <li>Electrical & Wiring</li>
+            <li>Plumbing & Sanitary</li>
+            <li>Painting & Textures</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>CONTACT</h3>
+          <p>📍 Tamil Nadu, India</p>
+          <p>📞 +91 98765 43210</p>
+          <p>✉️ support@tasknest.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TaskNest Services. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // Automatically highlight matched providers from services page parameters at the top row
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const cityParam = urlParams.get('city');
+      const areaParam = urlParams.get('area');
+      const serviceParam = urlParams.get('service');
+      const categoryParam = urlParams.get('category');
+
+      if (cityParam && areaParam) {
+        const highlightBanner = document.getElementById('highlightBanner');
+        const highlightTitle = document.getElementById('highlightTitle');
+        const highlightCardWrap = document.getElementById('highlightCardWrap');
+        const heroSubtitle = document.getElementById('heroSubtitle');
+
+        heroSubtitle.textContent = `Showing top verified local experts matched for ${serviceParam || 'Service'} in ${cityParam} (${areaParam}).`;
+
+        let matchedCardsHTML = [];
+        const sections = document.querySelectorAll('.cat-section-block');
+
+        // 1. Try finding matching cards in the specific category section first
+        sections.forEach(sec => {
+          if (!categoryParam || sec.getAttribute('data-category') === categoryParam) {
+            const cards = sec.querySelectorAll('[data-city]');
+            cards.forEach(card => {
+              if (card.getAttribute('data-city') === cityParam) {
+                matchedCardsHTML.push(card.outerHTML);
+              }
             });
+          }
+        });
 
-            if (!hasResults) {
-                container.innerHTML = `
-                    <div class="text-center py-16 bg-white rounded-2xl shadow-custom-card border border-gray-100">
-                        <p class="text-gray-500 text-base">No service providers found for the selected city.</p>
-                    </div>
-                `;
+        // 2. Fallback to any card in that city if category didn't yield cards
+        if (matchedCardsHTML.length === 0) {
+          const allCards = document.querySelectorAll('[data-city]');
+          allCards.forEach(card => {
+            if (card.getAttribute('data-city') === cityParam) {
+              matchedCardsHTML.push(card.outerHTML);
             }
+          });
         }
 
-        // Open Modal
-        window.openBookingModal = function(provider) {
-            modalName.textContent = provider.name;
-            modalSpecialty.textContent = provider.specialty;
-            modalDesc.textContent = provider.desc;
-            modalArea.textContent = `${provider.area}, ${provider.city}`;
-            modalPhone.textContent = provider.phone;
-            callActionBtn.href = `tel:${provider.phone}`;
-            modal.classList.remove('hidden');
-        };
-
-        closeModalBtn.addEventListener('click', () => modal.classList.add('hidden'));
-        modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.add('hidden'); });
-
-        locationSelect.addEventListener('change', renderProviders);
-        document.addEventListener('DOMContentLoaded', renderProviders);
-    </script>
+        if (matchedCardsHTML.length > 0) {
+          highlightBanner.style.display = 'block';
+          highlightTitle.textContent = `✨ Best Matches for ${areaParam}, ${cityParam} (${serviceParam || 'Selected Service'})`;
+          highlightCardWrap.innerHTML = matchedCardsHTML.join('');
+        }
+      }
+    });
+  </script>
 </body>
 </html>

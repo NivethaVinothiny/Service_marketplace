@@ -1,207 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskNest</title>
-    <!--Link CSS File-->
-    <link rel="stylesheet" href="booking.css">
-
-    <!--Link Google Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Lexend+Deca:wght@100..900&display=swap"
-        rel="stylesheet">
-
-    <!--Link Font Awesome-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskNest | Book Your Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="booking.css">
+  <script src="booking.js" defer></script>
 </head>
-
-
 <body>
-    <!--Navbar-->
-    <header class="navbar">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-        <div class="logo">
-            <div class="logo-icon">
-                <i class="fa-solid fa-house"></i>
+  <!-- NAVIGATION BAR (Exact Home Page Match) -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="logo" href="index.html" aria-label="TaskNest home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M4 11 12 4l8 7M6 10v9h12v-9M10 19v-5h4v5"/></svg>
+        </span>
+        <span class="logo-text">TaskNest</span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" type="button"
+              aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <!-- SIDE NAVIGATION PANEL -->
+      <div class="nav-panel" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="providers.html" class="nav-link">Providers</a></li>
+          <li><a href="booking.html" class="nav-link active" aria-current="page">Booking</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="side-login-item"><a href="login.html" class="nav-link login-link-special">✨ Login</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a class="btn btn-primary nav-cta" href="booking.html">Get started</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" style="min-height: 145px; display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 25px 5%; background: linear-gradient(110deg, #fbf9f4 55%, #f7ead9);">
+      <div class="hero-text" style="width: 100%; max-width: 1180px; margin: 0 auto;">
+        <p class="eyebrow" style="color: var(--secondary); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px;">✨ Seamless Scheduling</p>
+        <h1 class="glow-text" style="font-size: clamp(1.8rem, 2.8vw, 2.4rem); line-height: 1.2; margin-bottom: 8px;">Book Your Service</h1>
+        <p style="color: var(--text-muted); font-size: 1rem;">Select your required expert, location, and preferred time slot for doorstep assistance.</p>
+      </div>
+    </section>
+
+    <!-- MAIN BOOKING LAYOUT -->
+    <div class="booking-layout">
+      <!-- LEFT FORM CARD -->
+      <div class="form-card">
+        <form id="bookingForm">
+          <div class="form-group">
+            <label for="service">Service <span>*</span></label>
+            <select id="service" required>
+              <option value="Carpentry">Carpentry</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Painting">Painting</option>
+              <option value="Landscaping">Landscaping</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="providerFieldWrapper">
+            <label for="providerSelect">Choose a provider</label>
+            <select id="providerSelect">
+              <option value="Any available professional">Any available professional</option>
+              <option value="Anbu Selvan">Anbu Selvan (Peelamedu)</option>
+              <option value="Karthik Kumar">Karthik Kumar (RS Puram)</option>
+              <option value="Vijay Anand">Vijay Anand (T. Nagar)</option>
+              <option value="Suresh Raj">Suresh Raj (Peelamedu)</option>
+              <option value="Murali Krishnan">Murali Krishnan (Gandhipuram)</option>
+              <option value="Divya Ramesh">Divya Ramesh (Ramanathapuram)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Service address <span>*</span></label>
+            <input type="text" id="address" placeholder="Enter your address or area" required>
+            <small id="addressError"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Preferred date <span>*</span></label>
+            <input type="date" id="date" required>
+            <small id="dateError"></small>
+          </div>
+
+          <div class="form-group">
+            <label>Preferred time slot <span>*</span></label>
+            <div class="time-slots" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <button type="button" class="time">9–11 AM</button>
+              <button type="button" class="time selected">11 AM–1 PM</button>
+              <button type="button" class="time">2–4 PM</button>
+              <button type="button" class="time">4–6 PM</button>
             </div>
-            <h2>TaskNest</h2>
+          </div>
+
+          <div class="form-group">
+            <label for="problem">Describe the problem <span>*</span></label>
+            <textarea id="problem" placeholder="Briefly describe the issue..." rows="4" required></textarea>
+            <div class="count" style="text-align: right; font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;"><span id="count">0</span>/500</div>
+            <small id="problemError"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Full name <span>*</span></label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <small id="nameError"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone number <span>*</span></label>
+            <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+            <small id="phoneError"></small>
+          </div>
+
+          <button type="submit" class="btn btn-primary glow-btn" style="width: 100%; margin-top: 10px; border-radius: 12px; padding: 14px;">Confirm & Book Appointment</button>
+        </form>
+      </div>
+
+      <!-- RIGHT SIDE SUMMARY ASIDE CARD -->
+      <aside class="summary-card-box" id="summaryAside">
+        <h2 style="margin-bottom: 20px;">Booking summary</h2>
+        
+        <div class="service-box" style="background: #effaf8; padding: 18px; border-radius: 14px; border: 1px solid rgba(59, 122, 87, 0.15); margin-bottom: 18px;">
+          <h3 id="summaryService" style="margin: 0; color: var(--primary); font-size: 1.1rem;">Carpentry</h3>
+          <p id="description" style="color: var(--text-muted); font-size: 0.92rem; margin: 4px 0 0 0;">Reliable Carpentry Services at your Doorstep</p>
         </div>
 
-        <nav>
-            <a href="home.html" class="active">Home</a>
-            <a href="services.html">Services</a>
-            <a href="providers.html">Providers</a>
-            <a href="booking.html">Booking</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-
-        <a href="#booking" class="start-btn">Get started</a>
-
-    </header>
-
-    <main>
-        <h1 style="color: #255744;">Book a trusted professional</h1>
-        <p class="subheading" style="color: #255744;">Tell us what you need and choose a convenient time.</p>
-
-        <div class="container">
-            <section class="booking" id="booking">
-                <h2>Book Your Service</h2>
-
-                <form id="bookingForm">
-                    <div class="form-row">
-                        <div class="field">
-                            <label>Service *</label>
-                            <select id="service">
-                                <option>Carpentry</option>
-                                <option>Electrical</option>
-                                <option>Plumbing</option>
-                                <option>Painting</option>
-                                <option>Landscaping</option>
-                            </select>
-                        </div>
-
-                        <div class="field">
-                            <label>Choose a provider</label>
-                            <select>
-                                <option>Any available professional</option>
-                                <option>Saravanan</option>
-                                <option>Ramesh</option>
-                                <option>Karthik</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label>Service address *</label>
-                        <input type="text" id="address" placeholder="Enter your address or area">
-                        <small id="addressError"></small>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="field">
-                            <label>Preferred date *</label>
-                            <input type="date" id="date">
-                            <small id="dateError"></small>
-                        </div>
-
-                        <div class="field">
-                            <label>Preferred time slot *</label>
-                            <div class="time-slots">
-                                <button type="button" class="time">9–11 AM</button>
-                                <button type="button" class="time selected">11 AM–1 PM</button>
-                                <button type="button" class="time">2–4 PM</button>
-                                <button type="button" class="time">4–6 PM</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label>Describe the problem *</label>
-                        <textarea id="problem" maxlength="500" placeholder="Briefly describe the issue..."></textarea>
-                        <small id="problemError"></small>
-                        <p class="count"><span id="count">0</span>/500</p>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="field">
-                            <label>Full name *</label>
-                            <input type="text" id="name" placeholder="Enter your full name">
-                            <small id="nameError"></small>
-                        </div>
-
-                        <div class="field">
-                            <label>Phone number *</label>
-                            <input type="tel" id="phone" placeholder="+91 98765 43210">
-                            <small id="phoneError"></small>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="submit-button">
-                        Confirm booking request →
-                    </button>
-
-                    <p id="message"></p>
-                </form>
-            </section>
-
-            <section class="summary" id="summary">
-                <h2>Booking summary</h2>
-
-                <div class="service-box">
-                    <h3 id="summaryService">AC Repair</h3>
-                    <p id="description">Get your AC working perfectly again</p>
-                </div>
-
-                <div class="price-row">
-                    <span>Service visit</span>
-                    <b id="visitPrice">₹199</b>
-                </div>
-
-                <div class="price-row">
-                    <span>Estimated labour</span>
-                    <b id="labourPrice">₹500 – ₹1,200</b>
-                </div>
-
-                <div class="price-row">
-                    <span>Parts</span>
-                    <b>Charged separately</b>
-                </div>
-
-                <hr>
-
-                <div class="price-row">
-                    <span>Selected date</span>
-                    <b id="summaryDate">Choose a date</b>
-                </div>
-
-                <div class="price-row">
-                    <span>Selected time</span>
-                    <b id="summaryTime">11 AM–1 PM</b>
-                </div>
-
-                <div class="total">
-                    <p>Total estimated cost</p>
-                    <h2 id="totalPrice">₹699 – ₹1,399</h2>
-                </div>
-
-                <p class="note">✓ No payment required now</p>
-                <p class="note">✓ Final price confirmed after inspection</p>
-            </section>
+        <div class="price-row" style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted);">
+          <span>Service visit</span>
+          <b id="visitPrice" style="color: var(--text);">₹199</b>
+        </div>
+        <div class="price-row" style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted);">
+          <span>Estimated labour</span>
+          <b id="labourPrice" style="color: var(--text);">₹500 – ₹1200</b>
+        </div>
+        <div class="price-row" style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted);">
+          <span>Parts</span>
+          <b style="color: var(--text);">Charged separately</b>
         </div>
 
-        <section class="benefits" id="contact">
-            <div>
-                <b>✓ Verified professionals</b>
-                <p>Trusted local service providers</p>
-            </div>
-            <div>
-                <b>✓ Transparent estimates</b>
-                <p>No hidden charges</p>
-            </div>
-            <div>
-                <b>✓ Easy rescheduling</b>
-                <p>We are here to help</p>
-            </div>
-        </section>
+        <hr style="border: none; border-top: 1px solid var(--line); margin: 16px 0;">
 
-        <!-- FOOTER -->
-        <footer class="site-footer">
-            <div class="footer-inner">
-                <div>
-                    <p class="footer-brand">TaskNest</p>
-                    <p class="footer-tagline">Good people. Great work. A home you love.</p>
-                </div>
-                <p class="footer-copy">&copy; 2026 TaskNest. All rights reserved.</p>
-            </div>
-        </footer>
-    </main>
+        <div class="price-row" style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted);">
+          <span>Selected date</span>
+          <b id="summaryDate" style="color: var(--text);">Choose a date</b>
+        </div>
+        <div class="price-row" style="display: flex; justify-content: space-between; margin-bottom: 18px; font-size: 0.95rem; color: var(--text-muted);">
+          <span>Selected time</span>
+          <b id="summaryTime" style="color: var(--text);">11 AM–1 PM</b>
+        </div>
 
-    <script src="booking.js"></script>
+        <div class="total-box" style="background: #effaf8; padding: 18px; border-radius: 14px; border: 1px solid rgba(59, 122, 87, 0.15);">
+          <p style="color: var(--primary); font-size: 0.92rem; margin: 0; font-weight: 600;">Total estimated cost</p>
+          <h2 id="totalPrice" style="color: var(--primary); font-size: 1.35rem; text-align: right; margin-top: 4px;">₹699 – ₹1399</h2>
+        </div>
+
+        <p class="note" style="margin-top: 16px; font-size: 0.88rem; color: #176b42; font-weight: 600;">✓ No payment required now</p>
+      </aside>
+    </div>
+  </main>
+
+  <!-- POPUP MODAL FOR SUCCESSFUL BOOKING -->
+  <div class="summary-modal-overlay" id="summaryModalOverlay">
+    <div class="summary-modal-card">
+      <div class="modal-header">
+        <h3>✨ Booking Confirmed Successfully!</h3>
+        <button class="close-modal-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalSummaryContent"></div>
+      <button class="btn btn-primary glow-btn" id="modalDoneBtn" style="width: 100%; margin-top: 20px; border-radius: 12px; padding: 14px;">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- POPUP MODAL FOR LOGIN REQUIRED -->
+  <div class="summary-modal-overlay" id="loginPromptModalOverlay">
+    <div class="summary-modal-card" style="text-align: center;">
+      <div class="modal-header">
+        <h3>🔒 Login Required</h3>
+        <button class="close-modal-btn" id="closeLoginModal">&times;</button>
+      </div>
+      <div class="modal-body" style="padding: 15px 0;">
+        <p>You must be logged in to confirm and book your appointment with TaskNest experts.</p>
+      </div>
+      <div style="margin-top: 15px;">
+        <a href="login.html" class="btn btn-primary glow-btn" style="width: 100%; text-decoration: none; display: block; text-align: center; border-radius: 12px; padding: 14px;">Go to Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER (Exact Home Page Class Match: .footer-col) -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">🌿 TaskNest</div>
+          <p class="footer-desc">Your Vision. Our Expertise. One Future, Built Together. Connecting you with verified home service experts.</p>
+        </div>
+        <div class="footer-col">
+          <h3>QUICK LINKS</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="providers.html">Service Providers</a></li>
+            <li><a href="booking.html">Bookings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>4 CORE SERVICES</h3>
+          <ul>
+            <li><a href="services.html">Carpentry &amp; Woodwork</a></li>
+            <li><a href="services.html">Electrical &amp; Wiring</a></li>
+            <li><a href="services.html">Plumbing &amp; Sanitary</a></li>
+            <li><a href="services.html">Painting &amp; Textures</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>CONTACT</h3>
+          <p>📍 Tamil Nadu, India</p>
+          <p>📞 +91 98765 43210</p>
+          <p>✉️ support@tasknest.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TaskNest Services. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
-
 </html>
