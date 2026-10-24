@@ -3,275 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="TaskNest helps you find reliable, skilled local professionals for cleaning, plumbing, electrical work and painting.">
-  <title>TaskNest | Quality Services, Trusted Professionals</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="home.css">
+  <title>Local Market Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
 
-  <!-- NAVIGATION BAR -->
-  <header class="site-header">
-    <nav class="navbar" aria-label="Main navigation">
-      <a class="logo" href="index.html" aria-label="TaskNest home">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false"><path d="M4 11 12 4l8 7M6 10v9h12v-9M10 19v-5h4v5"/></svg>
-        </span>
-        <span class="logo-text">TaskNest</span>
-      </a>
+  <div class="floating-icons" aria-hidden="true">
+    <span class="float f1">🛒</span>
+    <span class="float f2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mop-sparkles preview-icon"><path d="M10 22a3 3 0 01-3-3"/><path d="M10 22c2.761 0 5-1.79 5-4-4.42 0-4.08-5-8.5-5a4.501 4.501 0 000 9z"/><path d="M10 3H8"/><path d="M12.5 11.5 22 2"/><path d="M20 13v4"/><path d="M22 15h-4"/><path d="M4 5v4"/><path d="M6 7H2"/><path d="m6.98 13.02 2.665-2.664a1.21 1.21 0 011.71 0l2.29 2.288a1.21 1.21 0 010 1.712l-2.088 2.087"/><path d="M9 2v2"/></svg></span>
+    <span class="float f3">&#127912;</span>
+    <span class="float f4">📦</span>
+    <span class="float f5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paintbrush preview-icon"><path d="m14.622 17.897-10.68-2.913"/><path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z"/><path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15"/></svg></span>
+    <span class="float f6">🛍️</span>
+  </div>
 
-      <button class="nav-toggle" id="nav-toggle" type="button"
-              aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-
-      <div class="nav-panel" id="nav-menu">
-        <ul class="nav-links">
-          <li><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="providers.html" class="nav-link">Providers</a></li>
-          <li><a href="booking.html" class="nav-link">Booking</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-        </ul>
-        <a class="btn btn-primary nav-cta" href="booking.html">Get started</a>
-      </div>
-    </nav>
-  </header>
-
-  <main id="main-content">
-
-    <!-- HERO SECTION -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <div class="hero-content">
-          <p class="eyebrow">Welcome to TaskNest</p>
-          <h1 id="hero-title">Quality Services, Trusted Professionals.</h1>
-          <p class="hero-text">Find reliable help for the place you call home. From everyday upkeep to the jobs you've been putting off, discover skilled local professionals with ease.</p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="services.html">Find a service</a>
-            <a class="btn btn-outline" href="contact.html">Become a provider</a>
-          </div>
-
-          <div class="hero-note">
-            <span class="dots" aria-hidden="true">
-              <span class="dot dot-1"></span>
-              <span class="dot dot-2"></span>
-              <span class="dot dot-3"></span>
-            </span>
-            <p>Good help makes a house feel like home.</p>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <span class="hero-circle" aria-hidden="true"></span>
-          <div class="photo-frame hero-photo" data-label="Add photo: images/hero.jpg">
-            <img src="images/hero.jpg" data-photo
-                 alt="A service professional in a green uniform working in a bright, tidy living room">
-          </div>
-          <div class="hero-badge">
-            <span class="badge-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16 9.8"/></svg>
-            </span>
-            <p>Care for every corner of home</p>
-          </div>
-        </div>
+  <main class="container">
+    <section class="welcome">
+      <div class="brand">🏪 <span>LocalMarket Service </span></div>
+      <p class="eyebrow">YOUR NEIGHBOURHOOD, CONNECTED</p>
+      <h1>Everything local<br>
+        <span>All in one place</span>
+      </h1>
+      <p class="description">
+        Discover nearby Services, painting and carpenters 
+           locally and support your community.
+      </p>
+      <div class="features">
+        <span> &#127912; Painting</span>
+        <span> &#128296; Carpentry</span>
+        <span>🚚 Nearby services</span>
       </div>
     </section>
 
-    <!-- POPULAR CATEGORIES -->
-    <section class="band" aria-labelledby="categories-title">
-      <div class="container">
-        <header class="section-header">
-          <div>
-            <p class="eyebrow">Explore services</p>
-            <h2 id="categories-title">Popular Categories</h2>
-            <p class="section-sub">The right help for every room and every to-do.</p>
-          </div>
-          <a class="text-link" href="providers.html">Meet the professionals <span aria-hidden="true">&rarr;</span></a>
-        </header>
+    <section class="login-card">
+      <div class="card-icon">👋</div>
+      <h2>Welcome back!</h2>
+      <p class="subtitle">Sign in to your LocalMarket account</p>
 
-        <div class="category-grid">
-          <article class="category-card">
-            <div class="photo-frame card-photo" data-label="Add photo: images/cat-cleaning.jpg">
-              <img src="images/cat-cleaning.jpg" data-photo alt="Two people cleaning a bright living room">
-            </div>
-            <div class="card-body">
-              <h3>Home Cleaning</h3>
-              <p>A fresh start for your space.</p>
-              <a class="card-link" href="services.html?category=Cleaning" data-category="Cleaning">Browse cleaning <span aria-hidden="true">&rarr;</span></a>
-            </div>
-          </article>
+      <form id="loginForm">
+        <label for="email">Email address</label>
+        <input id="email" type="email"
+          placeholder="you@example.com" required>
 
-          <article class="category-card">
-            <div class="photo-frame card-photo" data-label="Add photo: images/cat-plumbing.jpg">
-              <img src="images/cat-plumbing.jpg" data-photo alt="Hands adjusting a brass fitting">
-            </div>
-            <div class="card-body">
-              <h3>Plumbing</h3>
-              <p>Solutions that keep things flowing.</p>
-              <a class="card-link" href="services.html?category=Plumbing" data-category="Plumbing">Browse plumbing <span aria-hidden="true">&rarr;</span></a>
-            </div>
-          </article>
+        <label for="password">Password</label>
+        <input id="password" type="password"
+          placeholder="Enter your password" required minlength="6">
 
-          <article class="category-card">
-            <div class="photo-frame card-photo" data-label="Add photo: images/cat-electrical.jpg">
-              <img src="images/cat-electrical.jpg" data-photo alt="An electrician working on a fuse panel">
-            </div>
-            <div class="card-body">
-              <h3>Electrical</h3>
-              <p>Expert attention, safely done.</p>
-              <a class="card-link" href="services.html?category=Electrical" data-category="Electrical">Browse electrical <span aria-hidden="true">&rarr;</span></a>
-            </div>
-          </article>
-
-          <article class="category-card">
-            <div class="photo-frame card-photo" data-label="Add photo: images/cat-painting.jpg">
-              <img src="images/cat-painting.jpg" data-photo alt="A painter rolling paint onto a wall">
-            </div>
-            <div class="card-body">
-              <h3>Painting</h3>
-              <p>A beautiful new perspective.</p>
-              <a class="card-link" href="services.html?category=Painting" data-category="Painting">Browse painting <span aria-hidden="true">&rarr;</span></a>
-            </div>
-          </article>
+        <div class="options">
+          <label class="remember">
+            <input type="checkbox"> Remember me
+          </label>
+          <a href="#" id="forgot">Forgot password?</a>
         </div>
-      </div>
-    </section>
 
-    <!-- FEATURED SERVICE PROVIDERS -->
-    <section class="providers" aria-labelledby="providers-title">
-      <div class="container">
-        <header class="section-header">
-          <div>
-            <p class="eyebrow">Local talent</p>
-            <h2 id="providers-title">Featured Providers</h2>
-            <p class="section-sub">Meet the people who make the work feel effortless.</p>
-          </div>
-        </header>
+        <button type="submit" class="login-btn">
+          <span>Sign In</span>
+          <span class="arrow">→</span>
+        </button>
+    
 
-        <div class="provider-grid">
-          <article class="provider-card">
-            <div class="photo-frame provider-photo" data-label="Add photo: images/provider-ananya.jpg">
-              <img src="images/provider-ananya.jpg" data-photo alt="Portrait of Ananya Rao holding a duster and spray bottle">
-            </div>
-            <div class="provider-top">
-              <h3>Ananya Rao</h3>
-              <p class="rating" aria-label="Rated 4.9 out of 5"><span class="star" aria-hidden="true">&#9733;</span> 4.9</p>
-            </div>
-            <p class="provider-role">Home Cleaning Specialist</p>
-            <p class="provider-place">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-              Chennai
-            </p>
-            <a class="btn btn-primary btn-block" href="booking.html?provider=Ananya%20Rao">Enquire to book<span class="visually-hidden"> with Ananya Rao</span></a>
-          </article>
+       <div class="social-divider">
+            <span class="divider-text"> or sign in with</span>  
 
-          <article class="provider-card">
-            <div class="photo-frame provider-photo" data-label="Add photo: images/provider-arjun.jpg">
-              <img src="images/provider-arjun.jpg" data-photo alt="Portrait of Arjun Menon smiling with arms crossed">
-            </div>
-            <div class="provider-top">
-              <h3>Arjun Menon</h3>
-              <p class="rating" aria-label="Rated 4.8 out of 5"><span class="star" aria-hidden="true">&#9733;</span> 4.8</p>
-            </div>
-            <p class="provider-role">Plumbing Specialist</p>
-            <p class="provider-place">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-              Chennai
-            </p>
-            <a class="btn btn-primary btn-block" href="booking.html?provider=Arjun%20Menon">Enquire to book<span class="visually-hidden"> with Arjun Menon</span></a>
-          </article>
+                <p>
+                    <span class="g1">G</span>
+                    <span class="g2">o</span>
+                    <span class="g3">o</span>
+                    <span class="g4">g</span>
+                    <span class="g5">l</span>
+                    <span class="g6">e</span>
+                    </p>
+                    
+       </div>
 
-          <article class="provider-card">
-            <div class="photo-frame provider-photo" data-label="Add photo: images/provider-karthik.jpg">
-              <img src="images/provider-karthik.jpg" data-photo alt="Portrait of Karthik S working on an electrical fitting">
-            </div>
-            <div class="provider-top">
-              <h3>Karthik S</h3>
-              <p class="rating" aria-label="Rated 4.9 out of 5"><span class="star" aria-hidden="true">&#9733;</span> 4.9</p>
-            </div>
-            <p class="provider-role">Electrical Specialist</p>
-            <p class="provider-place">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-              Chennai
-            </p>
-            <a class="btn btn-primary btn-block" href="booking.html?provider=Karthik%20S">Enquire to book<span class="visually-hidden"> with Karthik S</span></a>
-          </article>
+        <p id="message" role="status"></p>
+      </form>
 
-          <article class="provider-card">
-            <div class="photo-frame provider-photo" data-label="Add photo: images/provider-meera.jpg">
-              <img src="images/provider-meera.jpg" data-photo alt="Portrait of Meera Nair in a cream jacket">
-            </div>
-            <div class="provider-top">
-              <h3>Meera Nair</h3>
-              <p class="rating" aria-label="Rated 4.8 out of 5"><span class="star" aria-hidden="true">&#9733;</span> 4.8</p>
-            </div>
-            <p class="provider-role">Interior Painting Specialist</p>
-            <p class="provider-place">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-              Chennai
-            </p>
-            <a class="btn btn-primary btn-block" href="booking.html?provider=Meera%20Nair">Enquire to book<span class="visually-hidden"> with Meera Nair</span></a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- WHY TASKNEST -->
-    <section class="features" aria-label="Why choose TaskNest">
-      <ul class="features-list">
-        <li class="feature">
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16 9.8"/></svg>
-          </span>
-          <h3>Verified professionals</h3>
-          <p>Explore clear profiles and find a professional suited to your project.</p>
-        </li>
-        <li class="feature">
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3z"/><path d="m9 12 2.2 2.2L15 10.4"/></svg>
-          </span>
-          <h3>Booking with clarity</h3>
-          <p>Start with a direct enquiry and discuss the details before making plans.</p>
-        </li>
-        <li class="feature">
-          <span class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/></svg>
-          </span>
-          <h3>Transparent pricing</h3>
-          <p>Ask about scope and costs upfront so you know what to expect.</p>
-        </li>
-      </ul>
-    </section>
-
-    <!-- CALL TO ACTION -->
-    <section class="cta-wrap" aria-labelledby="cta-title">
-      <div class="cta">
-        <p class="cta-eyebrow">Let's get it done</p>
-        <h2 id="cta-title">A happier home starts with the right help.</h2>
-        <p class="cta-text">Find thoughtful, skilled help for your next home project.</p>
-        <a class="btn btn-light" href="services.html">Explore services</a>
-      </div>
+      <p class="signup">
+        New to LocalMarket? <a href="#" id="signup">Create account</a>
+      </p>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div>
-        <p class="footer-brand">TaskNest</p>
-        <p class="footer-tagline">Good people. Great work. A home you love.</p>
-      </div>
-      <p class="footer-copy">&copy; 2026 TaskNest. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="home.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
