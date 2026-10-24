@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskNest</title>
+    <!--Link CSS File-->
+    <link rel="stylesheet" href="booking.css">
+
+    <!--Link Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Lexend+Deca:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <!--Link Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+</head>
+
+
+<body>
+    <!--Navbar-->
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-house"></i>
+            </div>
+            <h2>TaskNest</h2>
+        </div>
+
+        <nav>
+            <a href="home.html" class="active">Home</a>
+            <a href="services.html">Services</a>
+            <a href="providers.html">Providers</a>
+            <a href="booking.html">Booking</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <a href="#booking" class="start-btn">Get started</a>
+
+    </header>
+
+    <main>
+        <h1 style="color: #255744;">Book a trusted professional</h1>
+        <p class="subheading" style="color: #255744;">Tell us what you need and choose a convenient time.</p>
+
+        <div class="container">
+            <section class="booking" id="booking">
+                <h2>Book Your Service</h2>
+
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="field">
+                            <label>Service *</label>
+                            <select id="service">
+                                <option>Carpentry</option>
+                                <option>Electrical</option>
+                                <option>Plumbing</option>
+                                <option>Painting</option>
+                                <option>Landscaping</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label>Choose a provider</label>
+                            <select>
+                                <option>Any available professional</option>
+                                <option>Saravanan</option>
+                                <option>Ramesh</option>
+                                <option>Karthik</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Service address *</label>
+                        <input type="text" id="address" placeholder="Enter your address or area">
+                        <small id="addressError"></small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field">
+                            <label>Preferred date *</label>
+                            <input type="date" id="date">
+                            <small id="dateError"></small>
+                        </div>
+
+                        <div class="field">
+                            <label>Preferred time slot *</label>
+                            <div class="time-slots">
+                                <button type="button" class="time">9–11 AM</button>
+                                <button type="button" class="time selected">11 AM–1 PM</button>
+                                <button type="button" class="time">2–4 PM</button>
+                                <button type="button" class="time">4–6 PM</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Describe the problem *</label>
+                        <textarea id="problem" maxlength="500" placeholder="Briefly describe the issue..."></textarea>
+                        <small id="problemError"></small>
+                        <p class="count"><span id="count">0</span>/500</p>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field">
+                            <label>Full name *</label>
+                            <input type="text" id="name" placeholder="Enter your full name">
+                            <small id="nameError"></small>
+                        </div>
+
+                        <div class="field">
+                            <label>Phone number *</label>
+                            <input type="tel" id="phone" placeholder="+91 98765 43210">
+                            <small id="phoneError"></small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        Confirm booking request →
+                    </button>
+
+                    <p id="message"></p>
+                </form>
+            </section>
+
+            <section class="summary" id="summary">
+                <h2>Booking summary</h2>
+
+                <div class="service-box">
+                    <h3 id="summaryService">AC Repair</h3>
+                    <p id="description">Get your AC working perfectly again</p>
+                </div>
+
+                <div class="price-row">
+                    <span>Service visit</span>
+                    <b id="visitPrice">₹199</b>
+                </div>
+
+                <div class="price-row">
+                    <span>Estimated labour</span>
+                    <b id="labourPrice">₹500 – ₹1,200</b>
+                </div>
+
+                <div class="price-row">
+                    <span>Parts</span>
+                    <b>Charged separately</b>
+                </div>
+
+                <hr>
+
+                <div class="price-row">
+                    <span>Selected date</span>
+                    <b id="summaryDate">Choose a date</b>
+                </div>
+
+                <div class="price-row">
+                    <span>Selected time</span>
+                    <b id="summaryTime">11 AM–1 PM</b>
+                </div>
+
+                <div class="total">
+                    <p>Total estimated cost</p>
+                    <h2 id="totalPrice">₹699 – ₹1,399</h2>
+                </div>
+
+                <p class="note">✓ No payment required now</p>
+                <p class="note">✓ Final price confirmed after inspection</p>
+            </section>
+        </div>
+
+        <section class="benefits" id="contact">
+            <div>
+                <b>✓ Verified professionals</b>
+                <p>Trusted local service providers</p>
+            </div>
+            <div>
+                <b>✓ Transparent estimates</b>
+                <p>No hidden charges</p>
+            </div>
+            <div>
+                <b>✓ Easy rescheduling</b>
+                <p>We are here to help</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div>
+                    <p class="footer-brand">TaskNest</p>
+                    <p class="footer-tagline">Good people. Great work. A home you love.</p>
+                </div>
+                <p class="footer-copy">&copy; 2026 TaskNest. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="booking.js"></script>
+</body>
+
+</html>

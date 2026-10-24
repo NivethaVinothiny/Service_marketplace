@@ -1,0 +1,386 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Lexend Deca", sans-serif;
+    color: black ;
+}
+
+/* NAVBAR */
+.navbar {
+    height: 70px;
+    width: 100%;
+    padding: 0 3.8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f7f2;
+    /* border-bottom: 2px solid #245744; */
+}
+
+/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo h2 {
+    margin: 0;
+    color: #245744;
+    font-size: 18px;
+}
+
+.logo-icon {
+    width: 34px;
+    height: 34px;
+    background-color: #245744;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+/* MENU */
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #172b3a;
+    font-size: 15px;
+    padding: 6px 0;
+    white-space: nowrap;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #245744;
+}
+
+.navbar nav a.active {
+    border-bottom: 2px solid #245744;
+}
+
+/* GET STARTED */
+.start-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 24px;
+    background-color: #245744;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.start-btn:hover {
+    background-color: #193f32;
+}
+
+/* MAIN CONTENT */
+main {
+    width: 90%;
+    margin: 30px auto;
+}
+
+main > h1 {
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+/* BOOKING LAYOUT */
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.booking,
+.summary {
+    border: 1px solid #dce6ec;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* FORM */
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.field {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d4e0e8;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+textarea {
+    height: 90px;
+    resize: vertical;
+}
+
+small {
+    color: #c0392b;
+}
+
+/* TIME SLOTS */
+.time-slots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.time {
+    padding: 10px 5px;
+    background: white;
+    border: 1px solid #d4e0e8;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.time.selected {
+    background: #209d87;
+    color: white;
+}
+
+/* CHARACTER COUNTER */
+.count {
+    text-align: right;
+    font-size: 12px;
+}
+
+/* SUBMIT BUTTON */
+.submit-button {
+    width: 100%;
+    padding: 14px;
+    background: #209d87;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: #147766;
+}
+
+#message {
+    color: #147766;
+}
+
+/* BOOKING SUMMARY */
+.summary > h2 {
+    background: #effaf8;
+    padding: 15px;
+    margin: -20px -20px 20px;
+}
+
+.service-box {
+    background: #effaf8;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.service-box p,
+.note {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 20px 0;
+    font-size: 13px;
+}
+
+.price-row b {
+    text-align: right;
+}
+
+.total {
+    background: #effaf8;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.total p,
+.total h2 {
+    color: #147766;
+}
+
+.total h2 {
+    text-align: right;
+    font-size: 21px;
+}
+
+/* BENEFITS */
+.benefits {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    background: #f3f7fa;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.benefits p {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #255744;
+    color: white;
+    padding: 20px;
+    
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.footer-brand {
+    font-size: 16px;
+}
+
+.footer-tagline {
+    font-size: 12px;
+}
+
+.footer-copy {
+    font-size: 12px;
+}
+
+/* TABLET */
+@media (max-width: 1100px) {
+    .navbar {
+        gap: 20px;
+    }
+
+    .navbar nav {
+        gap: 22px;
+    }
+
+    .navbar nav a {
+        font-size: 15px;
+    }
+
+    .start-btn {
+        padding: 0 20px;
+        font-size: 14px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+    .navbar {
+        height: auto;
+        min-height: 70px;
+        padding: 14px 4%;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .logo h2 {
+        font-size: 18px;
+    }
+
+    .logo-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .navbar nav {
+        order: 3;
+        width: 100%;
+        gap: 22px;
+        overflow-x: auto;
+        padding: 5px 0;
+    }
+
+    .navbar nav a {
+        font-size: 14px;
+    }
+
+    .start-btn {
+        height: 38px;
+        padding: 0 18px;
+        font-size: 14px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+     .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 500px) {
+    main {
+        width: 94%;
+    }
+
+    main > h1 {
+        font-size: 28px;
+    }
+
+    .form-row {
+        display: block;
+    }
+
+    .benefits {
+        flex-direction: column;
+    }
+
+    .navbar nav {
+        gap: 20px;
+    }
+
+    .navbar nav a {
+        font-size: 14px;
+    }
+}
