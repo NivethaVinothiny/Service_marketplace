@@ -8,8 +8,10 @@ form.addEventListener("submit", function (event) {
     form.reportValidity();
     return;
   }
+  localStorage.setItem("isLoggedIn", "true");
   message.textContent = "Login successful! Redirecting...";
-  window.location.href = "index.html";
+  const returnTo = new URLSearchParams(window.location.search).get("returnTo");
+  window.location.href = returnTo === "booking.html" ? "booking.html" : "index.html";
 });
 
 document.getElementById("forgot").addEventListener("click", e => {

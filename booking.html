@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   
   <link rel="stylesheet" href="home.css">
   <link rel="stylesheet" href="booking.css">
@@ -177,13 +178,13 @@
 
   <!-- POPUP MODAL FOR SUCCESSFUL BOOKING -->
   <div class="summary-modal-overlay" id="summaryModalOverlay">
-    <div class="summary-modal-card">
+    <div class="summary-modal-card" role="dialog" aria-modal="true" aria-labelledby="bookingSuccessTitle">
       <div class="modal-header">
-        <h3>✨ Booking Confirmed Successfully!</h3>
-        <button class="close-modal-btn" id="closeModalBtn">&times;</button>
+        <h3 id="bookingSuccessTitle" class="text-xl font-bold text-emerald-900">🎉 Booking Confirmed Successfully!</h3>
+        <button class="close-modal-btn" id="closeModalBtn" type="button" aria-label="Close">&times;</button>
       </div>
-      <div class="modal-body" id="modalSummaryContent"></div>
-      <button class="btn btn-primary glow-btn" id="modalDoneBtn" style="width: 100%; margin-top: 20px; border-radius: 12px; padding: 14px;">Back to Home</button>
+      <div class="modal-body text-sm leading-6 text-slate-700" id="modalSummaryContent"></div>
+      <button class="mt-5 w-full rounded-lg bg-emerald-800 px-4 py-3 font-semibold text-white transition hover:bg-emerald-900 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2" id="modalDoneBtn" type="button">Close</button>
     </div>
   </div>
 
@@ -198,7 +199,7 @@
         <p>You must be logged in to confirm and book your appointment with TaskNest experts.</p>
       </div>
       <div style="margin-top: 15px;">
-        <a href="login.html" class="btn btn-primary glow-btn" style="width: 100%; text-decoration: none; display: block; text-align: center; border-radius: 12px; padding: 14px;">Go to Login</a>
+        <a href="login.html?returnTo=booking.html" class="btn btn-primary glow-btn" style="width: 100%; text-decoration: none; display: block; text-align: center; border-radius: 12px; padding: 14px;">Go to Login</a>
       </div>
     </div>
   </div>

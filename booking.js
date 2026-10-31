@@ -140,8 +140,8 @@ function setupBookingLogic() {
   const loginPromptModalOverlay = document.getElementById("loginPromptModalOverlay");
 
   if (bookingForm) {
-    bookingForm.addEventListener("submit", function (event) {
-      event.preventDefault();
+    bookingForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
       if (!bookingForm.checkValidity()) {
         bookingForm.reportValidity();
@@ -188,10 +188,7 @@ function setupBookingLogic() {
     closeModalBtn.addEventListener("click", () => { summaryModalOverlay.style.display = "none"; });
   }
   if (modalDoneBtn) {
-    modalDoneBtn.addEventListener("click", () => {
-      summaryModalOverlay.style.display = "none";
-      window.location.href = "index.html";
-    });
+    modalDoneBtn.addEventListener("click", () => { summaryModalOverlay.style.display = "none"; });
   }
   if (closeLoginModal) {
     closeLoginModal.addEventListener("click", () => { loginPromptModalOverlay.style.display = "none"; });
